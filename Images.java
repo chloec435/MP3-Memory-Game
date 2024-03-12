@@ -18,7 +18,7 @@ public class Images {
     }
     public void urls() {
         image1 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/34c8c5273925172ddeec167cb931926c.png");
-        image2 = EasyMode.class.getClassLoader().getResource("");
+        image2 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/mickey-mouse-easter3.png");
         image3 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/daisy-easter.png");
         image4 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/donald-easter5.png");
         image5 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/goofy-easter6.png");
