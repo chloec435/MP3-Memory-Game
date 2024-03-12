@@ -8,57 +8,63 @@ import java.util.Arrays;
 
 public class EasyMode {
     private JFrame frame;
+    private Images iconImages;
     private JButton[][] icons = new JButton[4][4];
     private ArrayList<ImageIcon> images = new ArrayList<ImageIcon>();
     public EasyMode() {
+        addImages();
         easyFrame();
     }
-//    public void addImages() {
-//        images.add(new ImageIcon("https://i.pinimg.com/736x/1c/68/9b/1c689b554c3f1d8704868da7185199e1.jpg"));
-//        images.add(new ImageIcon("https://i.etsystatic.com/41972288/r/il/7365a9/5200425836/il_300x300.5200425836_eebb.jpg"));
-//        images.add(new ImageIcon("https://png.pngtree.com/png-clipart/20230326/original/pngtree-bunny-with-easter-eggs-png-image_9004872.png"));
-//        images.add(new ImageIcon("https://i.pinimg.com/736x/93/65/32/93653297fdfdef40d51bb2fa961d46a8.jpg"));
-//        images.add(new ImageIcon("https://www.disneyclips.com/images/images/minnie-mouse-easter-eggs.png"));
-//        images.add(new ImageIcon("https://clipart-library.com/newimages/easter-clip-art-16.jpg"));
-//        images.add(new ImageIcon("https://www.disneyclips.com/images/images/goofy-easter6.png"));
-//        images.add(new ImageIcon("https://www.disneyclips.com/images/images/mickey-mouse-easter5.png"));
-//        images.add(new ImageIcon("https://i.pinimg.com/736x/1c/68/9b/1c689b554c3f1d8704868da7185199e1.jpg"));
-//        images.add(new ImageIcon("https://i.etsystatic.com/41972288/r/il/7365a9/5200425836/il_300x300.5200425836_eebb.jpg"));
-//        images.add(new ImageIcon("https://png.pngtree.com/png-clipart/20230326/original/pngtree-bunny-with-easter-eggs-png-image_9004872.png"));
-//        images.add(new ImageIcon("https://i.pinimg.com/736x/93/65/32/93653297fdfdef40d51bb2fa961d46a8.jpg"));
-//        images.add(new ImageIcon("https://www.disneyclips.com/images/images/minnie-mouse-easter-eggs.png"));
-//        images.add(new ImageIcon("https://clipart-library.com/newimages/easter-clip-art-16.jpg"));
-//        images.add(new ImageIcon("https://www.disneyclips.com/images/images/goofy-easter6.png"));
-//        images.add(new ImageIcon("https://www.disneyclips.com/images/images/mickey-mouse-easter5.png"));
-//        System.out.println(images);
-//    }
+    public void addImages() {
+        iconImages = new Images();
+        images.addAll(Arrays.asList(iconImages.getEasyModeImages().toArray(new ImageIcon[0])));
+        System.out.println(images);
+    }
     public void easyFrame() {
-//        addImages();
         frame = new JFrame();
-        frame.setSize(800,840); //y-axis off by 40 for some reason
-        frame.setResizable(false);
+        frame.setSize(800,800); //y-axis off by 40 for some reason
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setLocationRelativeTo(null);
-        int xAxis = 0;
-        int yAxis = 0;
+//        int xAxis = 0;
+//        int yAxis = 0;
         int index;
         for (int r = 0; r < icons.length; r++) {
             for (int c = 0; c < icons[0].length; c++) {
-//                index = (int)(Math.random() * images.size());
+                index = (int)(Math.random() * images.size());
                 icons[r][c] = new JButton(images.get(index));
-                icons[r][c].setBounds(xAxis + 40, yAxis + 40, 150, 150);
+//                icons[r][c].setBounds(xAxis + 40, yAxis + 40, 150, 150);
                 images.remove(index);
                 frame.add(icons[r][c]);
-                xAxis += 190;
+//                xAxis += 190;
             }
-            xAxis = 0;
-            yAxis += 190;
+//            xAxis = 0;
+//            yAxis += 190;
         }
-        JButton last = new JButton();//images.get(0); //missing last button for some reason
-        last.setBounds(610, 650, 150, 150);
-//        images.remove(0);
-        frame.add(last);
+//        JButton last = new JButton(); //missing last button for some reason
+////        last.setBounds(610, 650, 150, 150);
+////        images.remove(0);
+//        frame.add(last);
+        frame.setLayout(new GridLayout(4,4));
         frame.setVisible(true);
     }
-
+//    public void addImages() {
+//        URL image1 = EasyMode.class.getClassLoader().getResource("easter basket choco bunny.jpg");
+//        images.add(new ImageIcon("easter basket choco bunny.jpg"));
+//        images.add(new ImageIcon("easter basket three eggs.jpg"));
+//        images.add(new ImageIcon("easter goofy.png"));
+//        images.add(new ImageIcon("easter mickey mouse.png"));
+//        images.add(new ImageIcon("easter minnie mouse.png"));
+//        images.add(new ImageIcon("easter pluto.jpg"));
+//        images.add(new ImageIcon("white bunny easter egg.jpg"));
+//        images.add(new ImageIcon("white realistic bunny.png"));
+//        images.add(new ImageIcon("easter basket choco bunny.jpg"));
+//        images.add(new ImageIcon("easter basket three eggs.jpg"));
+//        images.add(new ImageIcon("easter goofy.png"));
+//        images.add(new ImageIcon("easter mickey mouse.png"));
+//        images.add(new ImageIcon("easter minnie mouse.png"));
+//        images.add(new ImageIcon("easter pluto.jpg"));
+//        images.add(new ImageIcon("white bunny easter egg.jpg"));
+//        images.add(new ImageIcon("white realistic bunny.png"));
+//        System.out.println(images);
+//    }
 }
