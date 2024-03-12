@@ -17,15 +17,19 @@ public class Startup {
     public void frame() {
         frame = new JFrame();
         frame.setSize(900, 900);
-        frame.setVisible(true);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     public void easyButton() {
+//        Container contentPane = frame.getContentPane();
+//        contentPane.setLayout(new FlowLayout());
         easy = new JButton("Easy Mode");
         easy.setFont(new Font("Arial", Font.PLAIN, 40));
-        easy.setBounds(225, 450, 450, 90);
+        easy.setBounds(225, 450, 250, 90);
         frame.add(easy);
+//        contentPane.setSize(900,900);
+//        contentPane.setVisible(true);
+        frame.setVisible(true);
         easy.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 easyMode = new EasyMode();
@@ -37,21 +41,21 @@ public class Startup {
 //        medium.setFont(new Font("Arial", Font.PLAIN, 40));
 //        medium.setBounds(225, 575, 450, 90);
 //        frame.add(medium);
-//        medium.addActionListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent e){
-//                mediumMode = new EasyMode();
-//            }
-//        });
+////        medium.addActionListener(new ActionListener() {
+////            public void actionPerformed(ActionEvent e){
+////                mediumMode = new EasyMode();
+////            }
+////        });
 //    }
 //    public void hardButton() {
 //        hard = new JButton("Hard Mode");
 //        hard.setFont(new Font("Arial", Font.PLAIN, 40));
 //        hard.setBounds(225, 700, 450, 90);
 //        frame.add(hard);
-//        hard.addActionListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent e){
-//                hardMode = new EasyMode();
-//            }
-//        });
+////        hard.addActionListener(new ActionListener() {
+////            public void actionPerformed(ActionEvent e){
+////                hardMode = new EasyMode();
+////            }
+////        });
 //    }
 }
