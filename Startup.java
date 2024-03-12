@@ -25,6 +25,7 @@ public class Startup {
         frame.setSize(900, 900);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
     }
     public void easyButton() {
 //        Container contentPane = frame.getContentPane();
@@ -34,11 +35,10 @@ public class Startup {
 //        gbc.anchor = GridBagConstraints.SOUTH;
 //        gbc.weighty = 0;
 //        gbc.weightx = 0;
-        easy.setBounds(225, 575, 450, 90);
+        easy.setBounds(225, 450, 450, 90);
         frame.add(easy);
 //        contentPane.setSize(900,900);
-//        contentPane.setVisible(true);
-        frame.setVisible(true);
+//        contentPane.setVisible(true)
         easy.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 easyMode = new EasyMode();
@@ -48,9 +48,9 @@ public class Startup {
     public void mediumButton() {
         medium = new JButton("Medium Mode");
         medium.setFont(new Font("Arial", Font.PLAIN, 40));
-        gbc.anchor = GridBagConstraints.SOUTH;
-        gbc.weighty = 0;
-        gbc.weightx = 0;
+//        gbc.anchor = GridBagConstraints.SOUTH;
+//        gbc.weighty = 0;
+//        gbc.weightx = 0;
         medium.setBounds(225, 575, 450, 90);
         frame.add(medium);
 //        medium.addActionListener(new ActionListener() {
@@ -62,9 +62,9 @@ public class Startup {
     public void hardButton() {
         hard = new JButton("Hard Mode");
         hard.setFont(new Font("Arial", Font.PLAIN, 40));
-        gbc.anchor = GridBagConstraints.SOUTH;
-        gbc.weighty = 0;
-        gbc.weightx = 0;
+//        gbc.anchor = GridBagConstraints.SOUTH;
+//        gbc.weighty = 0;
+//        gbc.weightx = 0;
         hard.setBounds(225, 700, 450, 90);
         frame.add(hard);
 //        hard.addActionListener(new ActionListener() {
