@@ -17,11 +17,11 @@ public class Startup {
     }
     public void frame() {
         frame = new JFrame();
-        frame.setLayout(new GridBagLayout());
-        gbc = new GridBagConstraints();
-        gbc.anchor = GridBagConstraints.SOUTH;
-        gbc.weighty = 0;
-        gbc.weightx = 0;
+//        frame.setLayout(new GridBagLayout());
+//        gbc = new GridBagConstraints();
+//        gbc.anchor = GridBagConstraints.SOUTH;
+//        gbc.weighty = 0;
+//        gbc.weightx = 0;
         frame.setSize(900, 900);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
