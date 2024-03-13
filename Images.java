@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,21 +29,21 @@ public class Images {
     }
     public void addEasyImages() {
         urls();
-        ImageIcon one = new ImageIcon(image1);
+        ImageIcon one = new ImageIcon(new ImageIcon(image1).getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH));
         easyModeImages.addAll(Arrays.asList(one, one));
-        ImageIcon two = new ImageIcon(image2);
+        ImageIcon two = new ImageIcon(new ImageIcon(image2).getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH));
         easyModeImages.addAll(Arrays.asList(two, two));
-        ImageIcon three = new ImageIcon(image3);
+        ImageIcon three = new ImageIcon(new ImageIcon(image3).getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH));
         easyModeImages.addAll(Arrays.asList(three, three));
-        ImageIcon four = new ImageIcon(image4);
+        ImageIcon four = new ImageIcon(new ImageIcon(image4).getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH));
         easyModeImages.addAll(Arrays.asList(four, four));
-        ImageIcon five = new ImageIcon(image5);
+        ImageIcon five = new ImageIcon(new ImageIcon(image5).getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH));
         easyModeImages.addAll(Arrays.asList(five, five));
-        ImageIcon six = new ImageIcon(image6);
+        ImageIcon six = new ImageIcon(new ImageIcon(image6).getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH));
         easyModeImages.addAll(Arrays.asList(six, six));
-        ImageIcon seven = new ImageIcon(image7);
+        ImageIcon seven = new ImageIcon(new ImageIcon(image7).getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH));
         easyModeImages.addAll(Arrays.asList(seven, seven));
-        ImageIcon eight = new ImageIcon(image8);
+        ImageIcon eight = new ImageIcon(new ImageIcon(image8).getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH));
         easyModeImages.addAll(Arrays.asList(eight, eight));
     }
     public ArrayList<ImageIcon> getEasyModeImages() {
