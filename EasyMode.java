@@ -1,67 +1,129 @@
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
-
 public class EasyMode {
     private JFrame frame;
-    private CardLayout card;
-    private Images iconImages;
-    private JButton[][] cover = new JButton[4][4];
-    private JButton[][] icons = new JButton[4][4];
-    private ArrayList<ImageIcon> images = new ArrayList<ImageIcon>();
+    private final JButton[][] icons = new JButton[4][4];
+    private final ImageIcon[][] assignedImage = new ImageIcon[4][4];
+    private final ArrayList<ImageIcon> images = new ArrayList<ImageIcon>();
+    private final ArrayList<JButton> matched = new ArrayList<JButton>();
+    private JButton firstButton = null;
+    private int firstRow;
+    private int firstColumn;
+    private int matches;
 
     public EasyMode() {
         addImages();
         startingFrame();
-        clickedButton();
+        checkSame();
     }
 
     public void addImages() {
-        iconImages = new Images();
+        Images iconImages = new Images();
         images.addAll(Arrays.asList(iconImages.getEasyModeImages().toArray(new ImageIcon[0])));
     }
+
     public void startingFrame() {
         frame = new JFrame();
         frame.setSize(800, 800);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setLocationRelativeTo(null);
+        int index;
         for (int r = 0; r < icons.length; r++) {
             for (int c = 0; c < icons[0].length; c++) {
-                cover[r][c] = new JButton();
-                frame.add(cover[r][c]);
+                icons[r][c] = new JButton();
+                frame.add(icons[r][c]);
+                index = (int) (Math.random() * images.size());
+                assignedImage[r][c] = images.get(index);
+                images.remove(index);
             }
         }
         frame.setLayout(new GridLayout(4, 4));
         frame.setVisible(true);
     }
-    public void clickedButton() {
-        int index = (int)(Math.random() * images.size());
+    public void checkSame() {
         for (int r = 0; r < icons.length; r++) {
             for (int c = 0; c < icons[0].length; c++) {
-                int row = r;
-                int column = c;
+                int finalR = r;
+                int finalC = c;
                 icons[r][c].addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        icons[row][column].setIcon(images.get(index));
+                        JButton clickedButton = icons[finalR][finalC];
+                        clickedButton.setIcon(assignedImage[finalR][finalC]);
+                        if (firstButton == null) {
+                            firstButton = clickedButton;
+                            firstRow = finalR;
+                            firstColumn = finalC;
+                        } else {
+                            disableAll(firstButton, clickedButton);
+                            if (firstButton != clickedButton &&
+                                    assignedImage[firstRow][firstColumn] ==
+                                            assignedImage[finalR][finalC]) {
+                                // Matching images
+                                firstButton.setEnabled(false);
+                                clickedButton.setEnabled(false);
+                                matched.addAll(Arrays.asList(firstButton, clickedButton));
+                                enableAll();
+                                firstButton = null;
+                                matches++;
+                                if (matches == 8) {
+                                    JOptionPane.showMessageDialog(frame, "Congratulations! " +
+                                            "You've matched all pairs.", "Game Over", JOptionPane.INFORMATION_MESSAGE);
+                                }
+                            } else {
+                                Timer timer = new Timer(1000, new ActionListener() {
+                                    @Override
+                                    public void actionPerformed(ActionEvent e) {
+
+                                        firstButton.setIcon(null);
+                                        clickedButton.setIcon(null);
+                                        enableAll();
+                                        firstButton = null;
+                                    }
+                                });
+                                timer.setRepeats(false);
+                                timer.start();
+                            }
+                        }
                     }
+                });
+            }
+        }
+    }
+    public void disableAll(JButton firstButton, JButton secondButton) {
+        for (JButton[] icon : icons) {
+            for (int c = 0; c < icons[0].length; c++) {
+                if (icon[c] != firstButton && icon[c] != secondButton) {
+                    icon[c].setEnabled(false);
                 }
             }
         }
     }
-    public void checkS
+    public void enableAll() {
+        for (JButton[] icon : icons) {
+            for (int c = 0; c < icons[0].length; c++) {
+                if (!matched.contains(icon[c])) {
+                    icon[c].setEnabled(true);
+                }
+            }
+        }
+    }
 }
 
 
 
 
-
+//icons[r][c].addActionListener(new ActionListener() {
+//@Override
+//public void actionPerformed(ActionEvent e) {
+//        icons[row][column].setIcon(images.get(index[0]));
+//        images.remove(index[0]);
+//        }
+//        });
 //    public void easyButtons() {
 //        int index;
 //        for (int r = 0; r < icons.length; r++) {
