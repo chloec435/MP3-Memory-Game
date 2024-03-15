@@ -22,19 +22,23 @@ public class EasyMode {
     }
 
     public void addImages() {
-        Images iconImages = new Images();
+        Images iconImages = new Images(0);
         images.addAll(Arrays.asList(iconImages.getEasyModeImages().toArray(new ImageIcon[0])));
     }
 
     public void startingFrame() {
-        frame = new JFrame();
+        frame = new JFrame("Mickey Mouse Clubhouse Memory Game");
         frame.setSize(800, 800);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         int index;
         for (int r = 0; r < icons.length; r++) {
             for (int c = 0; c < icons[0].length; c++) {
-                icons[r][c] = new JButton();
+                icons[r][c] = new JButton(new ImageIcon(new ImageIcon
+                        (EasyMode.class.getClassLoader().getResource
+                                ("Images/EasyMode/Mickey_Mouse_Clubhouse_logo.svg.png"))
+                        .getImage().getScaledInstance(200, 100, Image.SCALE_SMOOTH)));
+                icons[r][c].setBackground(Color.WHITE);
                 frame.add(icons[r][c]);
                 index = (int) (Math.random() * images.size());
                 assignedImage[r][c] = images.get(index);
