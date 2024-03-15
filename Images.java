@@ -13,7 +13,7 @@ public class Images {
     private URL image6;
     private URL image7;
     private URL image8;
-    private ArrayList<ImageIcon> easyModeImages = new ArrayList<ImageIcon>();
+    private final ArrayList<ImageIcon> easyModeImages = new ArrayList<ImageIcon>();
     public Images() {
         addEasyImages();
     }
