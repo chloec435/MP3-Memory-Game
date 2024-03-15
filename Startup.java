@@ -4,6 +4,8 @@ import java.awt.event.*;
 
 public class Startup {
     private EasyMode easyMode;
+    private MediumMode mediumMode;
+//    private HardMode hardMode;
     private JFrame frame;
 
     public Startup() {
@@ -13,13 +15,13 @@ public class Startup {
         hardButton();
     }
     public void frame() {
-        frame = new JFrame();
+        frame = new JFrame("Memory Game");
 //        frame.setLayout(new GridBagLayout());
 //        gbc = new GridBagConstraints();
 //        gbc.anchor = GridBagConstraints.SOUTH;
 //        gbc.weightY = 0;
 //        gbc.weightX = 0;
-        frame.setSize(900, 900);
+        frame.setSize(1000, 1000);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
@@ -33,7 +35,7 @@ public class Startup {
 //        gbc.anchor = GridBagConstraints.SOUTH;
 //        gbc.weightY = 0;
 //        gbc.weightX = 0;
-        easy.setBounds(225, 450, 450, 90);
+        easy.setBounds(275, 570, 450, 90);
         frame.add(easy);
 //        contentPane.setSize(900,900);
 //        contentPane.setVisible(true)
@@ -49,13 +51,13 @@ public class Startup {
 //        gbc.anchor = GridBagConstraints.SOUTH;
 //        gbc.weightY = 0;
 //        gbc.weightX = 0;
-        medium.setBounds(225, 575, 450, 90);
+        medium.setBounds(275, 685, 450, 90);
         frame.add(medium);
-//        medium.addActionListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent e){
-//                mediumMode = new EasyMode();
-//            }
-//        });
+        medium.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                mediumMode = new MediumMode();
+            }
+        });
     }
     public void hardButton() {
         JButton hard = new JButton("Hard Mode");
@@ -63,11 +65,11 @@ public class Startup {
 //        gbc.anchor = GridBagConstraints.SOUTH;
 //        gbc.weightY = 0;
 //        gbc.weightX = 0;
-        hard.setBounds(225, 700, 450, 90);
+        hard.setBounds(275, 800, 450, 90);
         frame.add(hard);
 //        hard.addActionListener(new ActionListener() {
 //            public void actionPerformed(ActionEvent e){
-//                hardMode = new EasyMode();
+//                hardMode = new HardMode();
 //            }
 //        });
     }
