@@ -4,15 +4,15 @@ import java.awt.event.*;
 
 public class Startup {
     private EasyMode easyMode;
-    private MediumMode mediumMode;
+//    private MediumMode mediumMode;
 //    private HardMode hardMode;
     private JFrame frame;
 
     public Startup() {
         frame();
         easyButton();
-        mediumButton();
-        hardButton();
+//        mediumButton();
+//        hardButton();
     }
     public void frame() {
         frame = new JFrame("Memory Game");
@@ -45,32 +45,32 @@ public class Startup {
             }
         });
     }
-    public void mediumButton() {
-        JButton medium = new JButton("Medium Mode");
-        medium.setFont(new Font("Arial", Font.PLAIN, 40));
-//        gbc.anchor = GridBagConstraints.SOUTH;
-//        gbc.weightY = 0;
-//        gbc.weightX = 0;
-        medium.setBounds(275, 685, 450, 90);
-        frame.add(medium);
-        medium.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e){
-                mediumMode = new MediumMode();
-            }
-        });
-    }
-    public void hardButton() {
-        JButton hard = new JButton("Hard Mode");
-        hard.setFont(new Font("Arial", Font.PLAIN, 40));
-//        gbc.anchor = GridBagConstraints.SOUTH;
-//        gbc.weightY = 0;
-//        gbc.weightX = 0;
-        hard.setBounds(275, 800, 450, 90);
-        frame.add(hard);
-//        hard.addActionListener(new ActionListener() {
+//    public void mediumButton() {
+//        JButton medium = new JButton("Medium Mode");
+//        medium.setFont(new Font("Arial", Font.PLAIN, 40));
+////        gbc.anchor = GridBagConstraints.SOUTH;
+////        gbc.weightY = 0;
+////        gbc.weightX = 0;
+//        medium.setBounds(275, 685, 450, 90);
+//        frame.add(medium);
+//        medium.addActionListener(new ActionListener() {
 //            public void actionPerformed(ActionEvent e){
-//                hardMode = new HardMode();
+//                mediumMode = new MediumMode();
 //            }
 //        });
-    }
+//    }
+//    public void hardButton() {
+//        JButton hard = new JButton("Hard Mode");
+//        hard.setFont(new Font("Arial", Font.PLAIN, 40));
+////        gbc.anchor = GridBagConstraints.SOUTH;
+////        gbc.weightY = 0;
+////        gbc.weightX = 0;
+//        hard.setBounds(275, 800, 450, 90);
+//        frame.add(hard);
+////        hard.addActionListener(new ActionListener() {
+////            public void actionPerformed(ActionEvent e){
+////                hardMode = new HardMode();
+////            }
+////        });
+//    }
 }
