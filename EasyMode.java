@@ -10,6 +10,10 @@ public class EasyMode {
     private final ImageIcon[][] assignedImage = new ImageIcon[4][4];
     private final ArrayList<ImageIcon> images = new ArrayList<ImageIcon>();
     private final ArrayList<JButton> matched = new ArrayList<JButton>();
+    private ImageIcon startIcon = new ImageIcon(new ImageIcon
+            (EasyMode.class.getClassLoader().getResource
+                    ("Images/EasyMode/Mickey_Mouse_Clubhouse_logo.svg.png"))
+            .getImage().getScaledInstance(200, 100, Image.SCALE_SMOOTH));
     private JButton firstButton = null;
     private int firstRow;
     private int firstColumn;
@@ -27,17 +31,14 @@ public class EasyMode {
     }
 
     public void startingFrame() {
-        frame = new JFrame("Mickey Mouse Clubhouse Memory Game");
+        frame = new JFrame();
         frame.setSize(800, 800);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         int index;
         for (int r = 0; r < icons.length; r++) {
             for (int c = 0; c < icons[0].length; c++) {
-                icons[r][c] = new JButton(new ImageIcon(new ImageIcon
-                        (EasyMode.class.getClassLoader().getResource
-                                ("Images/EasyMode/Mickey_Mouse_Clubhouse_logo.svg.png"))
-                        .getImage().getScaledInstance(200, 100, Image.SCALE_SMOOTH)));
+                icons[r][c] = new JButton(startIcon);
                 icons[r][c].setBackground(Color.WHITE);
                 frame.add(icons[r][c]);
                 index = (int) (Math.random() * images.size());
@@ -54,7 +55,6 @@ public class EasyMode {
                 int finalR = r;
                 int finalC = c;
                 icons[r][c].addActionListener(new ActionListener() {
-                    @Override
                     public void actionPerformed(ActionEvent e) {
                         JButton clickedButton = icons[finalR][finalC];
                         clickedButton.setIcon(assignedImage[finalR][finalC]);
@@ -62,30 +62,41 @@ public class EasyMode {
                             firstButton = clickedButton;
                             firstRow = finalR;
                             firstColumn = finalC;
-                        } else {
-                            disableAll(firstButton, clickedButton);
-                            if (firstButton != clickedButton &&
-                                    assignedImage[firstRow][firstColumn] ==
-                                            assignedImage[finalR][finalC]) {
-                                // Matching images
-                                firstButton.setEnabled(false);
-                                clickedButton.setEnabled(false);
-                                matched.addAll(Arrays.asList(firstButton, clickedButton));
-                                enableAll();
-                                firstButton = null;
+                        } else if (firstButton != clickedButton){
+                            if (assignedImage[firstRow][firstColumn] == assignedImage[finalR][finalC]) {
                                 matches++;
-                                if (matches == 8) {
+                                if (matches < 8) {
+                                    disableAll(firstButton, clickedButton);
+                                    Timer timer = new Timer(1000, new ActionListener() {
+                                        public void actionPerformed(ActionEvent e) {
+                                            firstButton.setEnabled(false);
+                                            clickedButton.setEnabled(false);
+                                            matched.addAll(Arrays.asList(firstButton, clickedButton));
+                                            enableAll("allExcept");
+                                            firstButton = null;
+                                        }
+                                    });
+                                    timer.setRepeats(false);
+                                    timer.start();
+                                } else if (matches == 8) {
+                                    enableAll("end");
                                     JOptionPane.showMessageDialog(frame, "Congratulations! " +
                                             "You've matched all pairs.", "Game Over", JOptionPane.INFORMATION_MESSAGE);
+                                    try {
+                                        Thread.sleep(2000);
+                                    } catch (InterruptedException ex) {
+                                        throw new RuntimeException(ex);
+                                    }
+                                    frame.dispose();
                                 }
                             } else {
+                                disableAll(firstButton, clickedButton);
                                 Timer timer = new Timer(1000, new ActionListener() {
-                                    @Override
                                     public void actionPerformed(ActionEvent e) {
 
-                                        firstButton.setIcon(null);
-                                        clickedButton.setIcon(null);
-                                        enableAll();
+                                        firstButton.setIcon(startIcon);
+                                        clickedButton.setIcon(startIcon);
+                                        enableAll("allExcept");
                                         firstButton = null;
                                     }
                                 });
@@ -107,10 +118,12 @@ public class EasyMode {
             }
         }
     }
-    public void enableAll() {
+    public void enableAll(String type) {
         for (JButton[] icon : icons) {
             for (int c = 0; c < icons[0].length; c++) {
-                if (!matched.contains(icon[c])) {
+                if (type.equals("allExcept") && !matched.contains(icon[c])) {
+                    icon[c].setEnabled(true);
+                } else if (type.equals("end")) {
                     icon[c].setEnabled(true);
                 }
             }
