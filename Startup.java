@@ -23,12 +23,16 @@ public class Startup {
         mainPanel = new JPanel(new BorderLayout());
         frame.add(mainPanel);
         topPanel = new JPanel();
-        JButton button = new JButton();
-        button.setPreferredSize(new Dimension(100,500));
-        button.setEnabled(false);
-        button.setBorderPainted(false);
-        button.setBackground(new Color(153,153,255));
-        topPanel.add(button);
+//        JButton button = new JButton();
+//        button.setPreferredSize(new Dimension(100,500));
+//        button.setEnabled(false);
+//        button.setBorderPainted(false);
+//        button.setBackground(new Color(153,153,255));
+        JLabel label = new JLabel(new ImageIcon(new ImageIcon
+                (Startup.class.getClassLoader().getResource("Images/Memory-Game-Logo.png"))
+                .getImage().getScaledInstance(1000, 500, Image.SCALE_SMOOTH)));
+//        topPanel.add(button);
+        topPanel.add(label);
         topPanel.setBackground(new Color(153,153,255));
         bottomPanel = new JPanel();
         bottomPanel.setLayout(new BorderLayout(0,25));
