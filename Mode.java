@@ -6,15 +6,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 public class Mode {
     private JFrame frame;
-    private JButton[][] icons;
-    private ImageIcon[][] assignedImage;
-    private ImageIcon easyStartIcon = new ImageIcon(new ImageIcon(EasyMode.class.getClassLoader()
+    private final JButton[][] icons;
+    private final ImageIcon[][] assignedImage;
+    private final ImageIcon easyStartIcon = new ImageIcon(new ImageIcon(EasyMode.class.getClassLoader()
             .getResource("Images/EasyMode/Mickey_Mouse_Clubhouse_logo.svg.png"))
             .getImage().getScaledInstance(250, 100, Image.SCALE_SMOOTH));
-    private ImageIcon mediumStartIcon = new ImageIcon(new ImageIcon(EasyMode.class.getClassLoader()
+    private final ImageIcon mediumStartIcon = new ImageIcon(new ImageIcon(EasyMode.class.getClassLoader()
             .getResource("Images/EasyMode/Mickey_Mouse_Clubhouse_logo.svg.png"))
             .getImage().getScaledInstance(200, 100, Image.SCALE_SMOOTH));
-    private ImageIcon hardStartIcon = new ImageIcon(new ImageIcon(EasyMode.class.getClassLoader()
+    private final ImageIcon hardStartIcon = new ImageIcon(new ImageIcon(EasyMode.class.getClassLoader()
             .getResource("Images/EasyMode/Mickey_Mouse_Clubhouse_logo.svg.png"))
             .getImage().getScaledInstance(200, 100, Image.SCALE_SMOOTH));
     private ImageIcon startIcon;
@@ -31,6 +31,7 @@ public class Mode {
         addImages(difficulty);
         startingFrame(difficulty, rows, columns);
         checkSame();
+//        showAll(difficulty, rows, columns);
     }
 
     public void addImages(String difficulty) {
@@ -147,6 +148,35 @@ public class Mode {
                 }
             }
         }
+    }
+    public void showAll(String difficulty, int rows, int columns) {
+        frame = new JFrame();
+        frame.setSize(1000, 1000);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
+        int index;
+        for (int r = 0; r < icons.length; r++) {
+            for (int c = 0; c < icons[0].length; c++) {
+                index = (int) (Math.random() * images.size());
+                if (difficulty.equals("easy")) {
+                    icons[r][c] = new JButton(images.get(index));
+                    icons[r][c].setBackground(Color.WHITE);
+                    startIcon = easyStartIcon;
+                } else if (difficulty.equals("medium")) {
+                    icons[r][c] = new JButton(images.get(index));
+                    icons[r][c].setBackground(Color.WHITE);
+                    startIcon = mediumStartIcon;
+                } else {
+                    icons[r][c] = new JButton(images.get(index));
+                    icons[r][c].setBackground(Color.WHITE);
+                    startIcon = hardStartIcon;
+                }
+                frame.add(icons[r][c]);
+                images.remove(index);
+            }
+        }
+        frame.setLayout(new GridLayout(rows, columns));
+        frame.setVisible(true);
     }
 }
 
