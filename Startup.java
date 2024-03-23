@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Objects;
 
 public class Startup {
     private JFrame frame;
@@ -19,7 +20,7 @@ public class Startup {
         frame.add(mainPanel);
         JPanel topPanel = new JPanel();
         JLabel label = new JLabel(new ImageIcon(new ImageIcon
-                (Startup.class.getClassLoader().getResource("Images/Startup/MemoryGame.png"))
+                (Objects.requireNonNull(Startup.class.getClassLoader().getResource("Images/Startup/MemoryGame.png")))
                 .getImage().getScaledInstance(1000, 500, Image.SCALE_SMOOTH)));
         topPanel.add(label);
         topPanel.setBackground(new Color(153,153,255));
@@ -42,9 +43,6 @@ public class Startup {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     public void easyButton() {
-//        Container contentPane = frame.getContentPane();
-//        contentPane.setLayout(new FlowLayout());
-        //    private GridBagConstraints gbc;
         JButton easy = new JButton();
         easy.setLayout(new BorderLayout());
         JLabel easyModeImage = new JLabel(new ImageIcon(new ImageIcon
@@ -52,16 +50,9 @@ public class Startup {
                 .getImage().getScaledInstance(700, 150, Image.SCALE_SMOOTH)));
         easy.add(easyModeImage, BorderLayout.CENTER);
         easy.setBackground(new Color(187, 255, 153));
-//        gbc.anchor = GridBagConstraints.SOUTH;
-//        gbc.weightY = 0;
-//        gbc.weightX = 0;
         easy.setPreferredSize(new Dimension(570, 110));
         easy.setBorderPainted(false);
-//        easy.setBounds(275, 570, 450, 90);
         bottomPanel.add(easy, BorderLayout.NORTH);
-//        panel.add(easy, BorderLayout.CENTER);
-//        contentPane.setSize(900,900);
-//        contentPane.setVisible(true)
         easy.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 EasyMode easyMode = new EasyMode();
@@ -69,9 +60,6 @@ public class Startup {
         });
     }
     public void mediumButton() {
-//        Container contentPane = frame.getContentPane();
-//        contentPane.setLayout(new FlowLayout());
-        //    private GridBagConstraints gbc;
         JButton medium = new JButton();
         medium.setLayout(new BorderLayout());
         JLabel mediumModeImage = new JLabel(new ImageIcon(new ImageIcon
@@ -79,16 +67,9 @@ public class Startup {
                 .getImage().getScaledInstance(700, 150, Image.SCALE_SMOOTH)));
         medium.add(mediumModeImage, BorderLayout.CENTER);
         medium.setBackground(new Color(255, 221, 153));
-//        gbc.anchor = GridBagConstraints.SOUTH;
-//        gbc.weightY = 0;
-//        gbc.weightX = 0;
         medium.setMaximumSize(new Dimension(570, 110));
         medium.setBorderPainted(false);
-//        easy.setBounds(275, 570, 450, 90);
         bottomPanel.add(medium, BorderLayout.CENTER);
-//        panel.add(easy, BorderLayout.CENTER);
-//        contentPane.setSize(900,900);
-//        contentPane.setVisible(true)
         medium.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 MediumMode mediumMode = new MediumMode();
@@ -96,9 +77,6 @@ public class Startup {
         });
     }
     public void hardButton() {
-//        Container contentPane = frame.getContentPane();
-//        contentPane.setLayout(new FlowLayout());
-        //    private GridBagConstraints gbc;
         JButton hard = new JButton();
         hard.setLayout(new BorderLayout());
         JLabel hardModeImage = new JLabel(new ImageIcon(new ImageIcon
@@ -106,50 +84,15 @@ public class Startup {
                 .getImage().getScaledInstance(700, 150, Image.SCALE_SMOOTH)));
         hard.add(hardModeImage, BorderLayout.CENTER);
         hard.setBackground(new Color(255, 153, 204));
-//        gbc.anchor = GridBagConstraints.SOUTH;
-//        gbc.weightY = 0;
-//        gbc.weightX = 0;
         hard.setPreferredSize(new Dimension(570, 110));
         hard.setBorderPainted(false);
-//        easy.setBounds(275, 570, 450, 90);
         bottomPanel.add(hard, BorderLayout.SOUTH);
-//        panel.add(easy, BorderLayout.CENTER);
-//        contentPane.setSize(900,900);
-//        contentPane.setVisible(true)
         hard.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 HardMode hardMode = new HardMode();
             }
         });
     }
-//    public void mediumButton() {
-//        JButton medium = new JButton("Medium Mode");
-//        medium.setFont(new Font("Arial", Font.PLAIN, 40));
-////        gbc.anchor = GridBagConstraints.SOUTH;
-////        gbc.weightY = 0;
-////        gbc.weightX = 0;
-//        medium.setBounds(275, 685, 450, 90);
-//        frame.add(medium);
-//        medium.addActionListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent e){
-//                mediumMode = new MediumMode();
-//            }
-//        });
-//    }
-//    public void hardButton() {
-//        JButton hard = new JButton("Hard Mode");
-//        hard.setFont(new Font("Arial", Font.PLAIN, 40));
-////        gbc.anchor = GridBagConstraints.SOUTH;
-////        gbc.weightY = 0;
-////        gbc.weightX = 0;
-//        hard.setBounds(275, 800, 450, 90);
-//        frame.add(hard);
-////        hard.addActionListener(new ActionListener() {
-////            public void actionPerformed(ActionEvent e){
-////                hardMode = new HardMode();
-////            }
-////        });
-//    }
 }
 
 
