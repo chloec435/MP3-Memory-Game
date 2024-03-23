@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Images {
-    private URL eImage1;private URL eImage2;private URL eImage3;private URL eImage4;
-    private URL eImage5;private URL eImage6;private URL eImage7;private URL eImage8;
+    private URL eImage1;private URL eImage2;private URL eImage3;
+    private URL eImage4;private URL eImage5;private URL eImage6;
     private URL mImage1;private URL mImage2;private URL mImage3;private URL mImage4;private URL mImage5;
     private URL mImage6;private URL mImage7;private URL mImage8;private URL mImage9;private URL mImage10;
 //    private URL mImage11;private URL mImage12;private URL mImage13;private URL mImage14;
@@ -30,14 +30,12 @@ public class Images {
         }
     }
     public void urls() {
-        eImage1 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/34c8c5273925172ddeec167cb931926c.png");
-        eImage2 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/mickey-mouse-easter3.png");
+        eImage1 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/minnie-pluto-easter.png");
+        eImage2 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/mickey-mouse-easter5.png");
         eImage3 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/daisy-easter.png");
         eImage4 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/donald-easter5.png");
         eImage5 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/goofy-easter6.png");
-        eImage6 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/mickey-mouse-easter5.png");
-        eImage7 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/minnie-mouse-easter-eggs.png");
-        eImage8 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/minnie-pluto-easter.png");
+        eImage6 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/minnie-mouse-easter-eggs.png");
 
         mImage1 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/34c8c5273925172ddeec167cb931926c.png");
         mImage2 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/mickey-mouse-easter3.png");
