@@ -31,9 +31,9 @@ public class Mode {
         icons = new JButton[rows][columns];
         assignedImage = new ImageIcon[rows][columns];
         addImages(difficulty);
-//        startingFrame(difficulty, rows, columns);
-//        checkSame(rows*columns/2);
-        showAll(difficulty, rows, columns);
+        startingFrame(difficulty, rows, columns);
+        checkSame(rows*columns/2);
+//        showAll(difficulty, rows, columns);
     }
 
     public void addImages(String difficulty) {
