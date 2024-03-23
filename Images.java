@@ -5,15 +5,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Images {
-    private URL eImage1;private URL eImage2;private URL eImage3;
-    private URL eImage4;private URL eImage5;private URL eImage6;
-    private URL mImage1;private URL mImage2;private URL mImage3;private URL mImage4;private URL mImage5;
-    private URL mImage6;private URL mImage7;private URL mImage8;private URL mImage9;private URL mImage10;
-//    private URL mImage11;private URL mImage12;private URL mImage13;private URL mImage14;
-//    private URL mImage15;private URL mImage16;private URL mImage17;private URL mImage18;
-    private URL hImage1;private URL hImage2;private URL hImage3;private URL hImage4;private URL hImage5;
-    private URL hImage6;private URL hImage7;private URL hImage8;private URL hImage9;private URL hImage10;
-    private URL hImage11;private URL hImage12;private URL hImage13;private URL hImage14;private URL hImage15;
+    private final ArrayList<URL> easyModeURLs = new ArrayList<URL>();
+    private final ArrayList<URL> mediumModeURLs = new ArrayList<URL>();
+    private final ArrayList<URL> hardModeURLs = new ArrayList<URL>();
     private final ArrayList<ImageIcon> easyModeImages = new ArrayList<ImageIcon>();
     private final ArrayList<ImageIcon> mediumModeImages = new ArrayList<ImageIcon>();
     private final ArrayList<ImageIcon> hardModeImages = new ArrayList<ImageIcon>();
@@ -30,107 +24,65 @@ public class Images {
         }
     }
     public void urls() {
-        eImage1 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/minnie-pluto-easter.png");
-        eImage2 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/mickey-mouse-easter5.png");
-        eImage3 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/daisy-easter.png");
-        eImage4 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/donald-easter5.png");
-        eImage5 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/goofy-easter6.png");
-        eImage6 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/minnie-mouse-easter-eggs.png");
+        URL eImage1 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/minnie-pluto-easter.png");
+        URL eImage2 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/mickey-mouse-easter5.png");
+        URL eImage3 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/daisy-easter.png");
+        URL eImage4 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/donald-easter5.png");
+        URL eImage5 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/goofy-easter6.png");
+        URL eImage6 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/minnie-mouse-easter-eggs.png");
+        easyModeURLs.addAll(Arrays.asList(eImage1, eImage2, eImage3, eImage4, eImage5, eImage6));
 
-        mImage1 = EasyMode.class.getClassLoader().getResource("Images/MediumMode/Bugs_Bunny.svg.png");
-        mImage2 = EasyMode.class.getClassLoader().getResource("Images/MediumMode/Daffy_Duck.svg.png");
-        mImage3 = EasyMode.class.getClassLoader().getResource("Images/MediumMode/ElmerFudd.png");
-        mImage4 = EasyMode.class.getClassLoader().getResource("Images/MediumMode/Lola_Bunny_(SVG).png");
-        mImage5 = EasyMode.class.getClassLoader().getResource("Images/MediumMode/Marvin_the_Martian.svg.png");
-        mImage6 = EasyMode.class.getClassLoader().getResource("Images/MediumMode/Porky_Pig.svg.png");
-        mImage7 = EasyMode.class.getClassLoader().getResource("Images/MediumMode/Sylvester_the_Cat.svg.png");
-        mImage8 = EasyMode.class.getClassLoader().getResource("Images/MediumMode/Taz-Looney_Tunes.svg.png");
-        mImage9 = EasyMode.class.getClassLoader().getResource("Images/MediumMode/Tweety.svg.png");
-        mImage10 = EasyMode.class.getClassLoader().getResource("Images/MediumMode/Yosemite_Sam.svg.png");
+        URL mImage1 = EasyMode.class.getClassLoader().getResource("Images/MediumMode/Bugs_Bunny.svg.png");
+        URL mImage2 = EasyMode.class.getClassLoader().getResource("Images/MediumMode/Daffy_Duck.svg.png");
+        URL mImage3 = EasyMode.class.getClassLoader().getResource("Images/MediumMode/ElmerFudd.png");
+        URL mImage4 = EasyMode.class.getClassLoader().getResource("Images/MediumMode/Lola_Bunny_(SVG).png");
+        URL mImage5 = EasyMode.class.getClassLoader().getResource("Images/MediumMode/Marvin_the_Martian.svg.png");
+        URL mImage6 = EasyMode.class.getClassLoader().getResource("Images/MediumMode/Porky_Pig.svg.png");
+        URL mImage7 = EasyMode.class.getClassLoader().getResource("Images/MediumMode/Sylvester_the_Cat.svg.png");
+        URL mImage8 = EasyMode.class.getClassLoader().getResource("Images/MediumMode/Taz-Looney_Tunes.svg.png");
+        URL mImage9 = EasyMode.class.getClassLoader().getResource("Images/MediumMode/Tweety.svg.png");
+        URL mImage10 = EasyMode.class.getClassLoader().getResource("Images/MediumMode/Yosemite_Sam.svg.png");
+        mediumModeURLs.addAll(Arrays.asList(mImage1, mImage2, mImage3, mImage4,
+                mImage5, mImage6, mImage7, mImage8, mImage9, mImage10));
 
-        hImage1 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/minnie-mouse-easter-eggs.png");
-        hImage2 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/minnie-pluto-easter.png");
-        hImage3 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/34c8c5273925172ddeec167cb931926c.png");
-        hImage4 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/mickey-mouse-easter3.png");
-        hImage5 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/daisy-easter.png");
-        hImage6 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/donald-easter5.png");
-        hImage7 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/goofy-easter6.png");
-        hImage8 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/mickey-mouse-easter5.png");
-        hImage9 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/minnie-mouse-easter-eggs.png");
-        hImage10 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/minnie-pluto-easter.png");
-        hImage11 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/minnie-mouse-easter-eggs.png");
-        hImage12 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/minnie-pluto-easter.png");
-        hImage13 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/34c8c5273925172ddeec167cb931926c.png");
-        hImage14 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/mickey-mouse-easter3.png");
-        hImage15 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/daisy-easter.png");
+        URL hImage1 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/minnie-mouse-easter-eggs.png");
+        URL hImage2 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/minnie-pluto-easter.png");
+        URL hImage3 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/34c8c5273925172ddeec167cb931926c.png");
+        URL hImage4 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/mickey-mouse-easter3.png");
+        URL hImage5 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/daisy-easter.png");
+        URL hImage6 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/donald-easter5.png");
+        URL hImage7 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/goofy-easter6.png");
+        URL hImage8 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/mickey-mouse-easter5.png");
+        URL hImage9 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/minnie-mouse-easter-eggs.png");
+        URL hImage10 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/minnie-pluto-easter.png");
+        URL hImage11 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/minnie-mouse-easter-eggs.png");
+        URL hImage12 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/minnie-pluto-easter.png");
+        URL hImage13 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/34c8c5273925172ddeec167cb931926c.png");
+        URL hImage14 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/mickey-mouse-easter3.png");
+        URL hImage15 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/daisy-easter.png");
+        hardModeURLs.addAll(Arrays.asList(hImage1, hImage2, hImage3, hImage4, hImage5, hImage6, hImage7,
+                hImage8, hImage9, hImage10, hImage11, hImage12, hImage13, hImage14, hImage15));
     }
     public void addEasyImages() {
-        ImageIcon one = new ImageIcon(new ImageIcon(eImage1).getImage().getScaledInstance(250, 250, Image.SCALE_SMOOTH));
-        easyModeImages.addAll(Arrays.asList(one, one));
-        ImageIcon two = new ImageIcon(new ImageIcon(eImage2).getImage().getScaledInstance(250, 250, Image.SCALE_SMOOTH));
-        easyModeImages.addAll(Arrays.asList(two, two));
-        ImageIcon three = new ImageIcon(new ImageIcon(eImage3).getImage().getScaledInstance(250, 250, Image.SCALE_SMOOTH));
-        easyModeImages.addAll(Arrays.asList(three, three));
-        ImageIcon four = new ImageIcon(new ImageIcon(eImage4).getImage().getScaledInstance(250, 250, Image.SCALE_SMOOTH));
-        easyModeImages.addAll(Arrays.asList(four, four));
-        ImageIcon five = new ImageIcon(new ImageIcon(eImage5).getImage().getScaledInstance(250, 250, Image.SCALE_SMOOTH));
-        easyModeImages.addAll(Arrays.asList(five, five));
-        ImageIcon six = new ImageIcon(new ImageIcon(eImage6).getImage().getScaledInstance(250, 250, Image.SCALE_SMOOTH));
-        easyModeImages.addAll(Arrays.asList(six, six));
+        for (int i = 0; i < 6; i++) {
+            ImageIcon icon = new ImageIcon(getScaled(new ImageIcon(easyModeURLs.get(i)), 235, 260));
+            easyModeImages.addAll(Arrays.asList(icon, icon));
+        }
     }
     public void addMediumImages() {
-        ImageIcon one = new ImageIcon(new ImageIcon(mImage1).getImage().getScaledInstance(250, 200, Image.SCALE_SMOOTH));
-        mediumModeImages.addAll(Arrays.asList(one, one));
-        ImageIcon two = new ImageIcon(new ImageIcon(mImage2).getImage().getScaledInstance(250, 200, Image.SCALE_SMOOTH));
-        mediumModeImages.addAll(Arrays.asList(two, two));
-        ImageIcon three = new ImageIcon(new ImageIcon(mImage3).getImage().getScaledInstance(250, 200, Image.SCALE_SMOOTH));
-        mediumModeImages.addAll(Arrays.asList(three, three));
-        ImageIcon four = new ImageIcon(new ImageIcon(mImage4).getImage().getScaledInstance(250, 200, Image.SCALE_SMOOTH));
-        mediumModeImages.addAll(Arrays.asList(four, four));
-        ImageIcon five = new ImageIcon(new ImageIcon(mImage5).getImage().getScaledInstance(250, 200, Image.SCALE_SMOOTH));
-        mediumModeImages.addAll(Arrays.asList(five, five));
-        ImageIcon six = new ImageIcon(new ImageIcon(mImage6).getImage().getScaledInstance(250, 200, Image.SCALE_SMOOTH));
-        mediumModeImages.addAll(Arrays.asList(six, six));
-        ImageIcon seven = new ImageIcon(new ImageIcon(mImage7).getImage().getScaledInstance(250, 200, Image.SCALE_SMOOTH));
-        mediumModeImages.addAll(Arrays.asList(seven, seven));
-        ImageIcon eight = new ImageIcon(new ImageIcon(mImage8).getImage().getScaledInstance(250, 200, Image.SCALE_SMOOTH));
-        mediumModeImages.addAll(Arrays.asList(eight, eight));
-        ImageIcon nine = new ImageIcon(new ImageIcon(mImage9).getImage().getScaledInstance(250, 200, Image.SCALE_SMOOTH));
-        mediumModeImages.addAll(Arrays.asList(nine, nine));
-        ImageIcon ten = new ImageIcon(new ImageIcon(mImage10).getImage().getScaledInstance(250, 200, Image.SCALE_SMOOTH));
-        mediumModeImages.addAll(Arrays.asList(ten, ten));
+        for (int i = 0; i < 10; i++) {
+            ImageIcon icon = new ImageIcon(getScaled(new ImageIcon(mediumModeURLs.get(i)), 175, 215));
+            mediumModeImages.addAll(Arrays.asList(icon, icon));
+        }
     }
     public void addHardImages() {
-        ImageIcon one = new ImageIcon(new ImageIcon(hImage1).getImage().getScaledInstance(200, 1000/6, Image.SCALE_SMOOTH));
-        hardModeImages.addAll(Arrays.asList(one, one));
-        ImageIcon two = new ImageIcon(new ImageIcon(hImage2).getImage().getScaledInstance(200, 1000/6, Image.SCALE_SMOOTH));
-        hardModeImages.addAll(Arrays.asList(two, two));
-        ImageIcon three = new ImageIcon(new ImageIcon(hImage3).getImage().getScaledInstance(200, 1000/6, Image.SCALE_SMOOTH));
-        hardModeImages.addAll(Arrays.asList(three, three));
-        ImageIcon four = new ImageIcon(new ImageIcon(hImage4).getImage().getScaledInstance(200, 1000/6, Image.SCALE_SMOOTH));
-        hardModeImages.addAll(Arrays.asList(four, four));
-        ImageIcon five = new ImageIcon(new ImageIcon(hImage5).getImage().getScaledInstance(200, 1000/6, Image.SCALE_SMOOTH));
-        hardModeImages.addAll(Arrays.asList(five, five));
-        ImageIcon six = new ImageIcon(new ImageIcon(hImage6).getImage().getScaledInstance(200, 1000/6, Image.SCALE_SMOOTH));
-        hardModeImages.addAll(Arrays.asList(six, six));
-        ImageIcon seven = new ImageIcon(new ImageIcon(hImage7).getImage().getScaledInstance(200, 1000/6, Image.SCALE_SMOOTH));
-        hardModeImages.addAll(Arrays.asList(seven, seven));
-        ImageIcon eight = new ImageIcon(new ImageIcon(hImage8).getImage().getScaledInstance(200, 1000/6, Image.SCALE_SMOOTH));
-        hardModeImages.addAll(Arrays.asList(eight, eight));
-        ImageIcon nine = new ImageIcon(new ImageIcon(hImage9).getImage().getScaledInstance(200, 1000/6, Image.SCALE_SMOOTH));
-        hardModeImages.addAll(Arrays.asList(nine, nine));
-        ImageIcon ten = new ImageIcon(new ImageIcon(hImage10).getImage().getScaledInstance(200, 1000/6, Image.SCALE_SMOOTH));
-        hardModeImages.addAll(Arrays.asList(ten, ten));
-        ImageIcon eleven = new ImageIcon(new ImageIcon(hImage11).getImage().getScaledInstance(200, 1000/6, Image.SCALE_SMOOTH));
-        hardModeImages.addAll(Arrays.asList(eleven, eleven));
-        ImageIcon twelve = new ImageIcon(new ImageIcon(hImage12).getImage().getScaledInstance(200, 1000/6, Image.SCALE_SMOOTH));
-        hardModeImages.addAll(Arrays.asList(twelve, twelve));
-        ImageIcon thirteen = new ImageIcon(new ImageIcon(hImage13).getImage().getScaledInstance(200, 1000/6, Image.SCALE_SMOOTH));
-        hardModeImages.addAll(Arrays.asList(thirteen, thirteen));
-        ImageIcon fourteen = new ImageIcon(new ImageIcon(hImage14).getImage().getScaledInstance(200, 1000/6, Image.SCALE_SMOOTH));
-        hardModeImages.addAll(Arrays.asList(fourteen, fourteen));
-        ImageIcon fifteen = new ImageIcon(new ImageIcon(hImage15).getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH));
-        hardModeImages.addAll(Arrays.asList(fifteen, fifteen));
+        for (int i = 0; i < 15; i++) {
+            ImageIcon icon = new ImageIcon(getScaled(new ImageIcon(hardModeURLs.get(i)), 200, 1000/6));
+            hardModeImages.addAll(Arrays.asList(icon, icon));
+        }
+    }
+    public Image getScaled(ImageIcon icon, int width, int height) {
+        return icon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
     }
     public ArrayList<ImageIcon> getImages(String difficulty) {
         if (difficulty.equals("easy")) {
@@ -142,3 +94,70 @@ public class Images {
         }
     }
 }
+
+
+
+//        ImageIcon one = new ImageIcon(new ImageIcon(eImage1).getImage().getScaledInstance(1000/3, 250, Image.SCALE_SMOOTH));
+//        easyModeImages.addAll(Arrays.asList(one, one));
+//        ImageIcon two = new ImageIcon(new ImageIcon(eImage2).getImage().getScaledInstance(1000/3, 250, Image.SCALE_SMOOTH));
+//        easyModeImages.addAll(Arrays.asList(two, two));
+//        ImageIcon three = new ImageIcon(new ImageIcon(eImage3).getImage().getScaledInstance(1000/3, 250, Image.SCALE_SMOOTH));
+//        easyModeImages.addAll(Arrays.asList(three, three));
+//        ImageIcon four = new ImageIcon(new ImageIcon(eImage4).getImage().getScaledInstance(1000/3, 250, Image.SCALE_SMOOTH));
+//        easyModeImages.addAll(Arrays.asList(four, four));
+//        ImageIcon five = new ImageIcon(new ImageIcon(eImage5).getImage().getScaledInstance(1000/3, 250, Image.SCALE_SMOOTH));
+//        easyModeImages.addAll(Arrays.asList(five, five));
+//        ImageIcon six = new ImageIcon(new ImageIcon(eImage6).getImage().getScaledInstance(1000/3, 250, Image.SCALE_SMOOTH));
+//        easyModeImages.addAll(Arrays.asList(six, six));
+
+//        ImageIcon one = new ImageIcon(new ImageIcon(mImage1).getImage().getScaledInstance(250, 200, Image.SCALE_SMOOTH));
+//        mediumModeImages.addAll(Arrays.asList(one, one));
+//        ImageIcon two = new ImageIcon(new ImageIcon(mImage2).getImage().getScaledInstance(250, 200, Image.SCALE_SMOOTH));
+//        mediumModeImages.addAll(Arrays.asList(two, two));
+//        ImageIcon three = new ImageIcon(new ImageIcon(mImage3).getImage().getScaledInstance(250, 200, Image.SCALE_SMOOTH));
+//        mediumModeImages.addAll(Arrays.asList(three, three));
+//        ImageIcon four = new ImageIcon(new ImageIcon(mImage4).getImage().getScaledInstance(250, 200, Image.SCALE_SMOOTH));
+//        mediumModeImages.addAll(Arrays.asList(four, four));
+//        ImageIcon five = new ImageIcon(new ImageIcon(mImage5).getImage().getScaledInstance(250, 200, Image.SCALE_SMOOTH));
+//        mediumModeImages.addAll(Arrays.asList(five, five));
+//        ImageIcon six = new ImageIcon(new ImageIcon(mImage6).getImage().getScaledInstance(250, 200, Image.SCALE_SMOOTH));
+//        mediumModeImages.addAll(Arrays.asList(six, six));
+//        ImageIcon seven = new ImageIcon(new ImageIcon(mImage7).getImage().getScaledInstance(250, 200, Image.SCALE_SMOOTH));
+//        mediumModeImages.addAll(Arrays.asList(seven, seven));
+//        ImageIcon eight = new ImageIcon(new ImageIcon(mImage8).getImage().getScaledInstance(250, 200, Image.SCALE_SMOOTH));
+//        mediumModeImages.addAll(Arrays.asList(eight, eight));
+//        ImageIcon nine = new ImageIcon(new ImageIcon(mImage9).getImage().getScaledInstance(250, 200, Image.SCALE_SMOOTH));
+//        mediumModeImages.addAll(Arrays.asList(nine, nine));
+//        ImageIcon ten = new ImageIcon(new ImageIcon(mImage10).getImage().getScaledInstance(250, 200, Image.SCALE_SMOOTH));
+//        mediumModeImages.addAll(Arrays.asList(ten, ten));
+
+//        ImageIcon one = new ImageIcon(getScaled(new ImageIcon(hImage15), 200, 1000/6));
+//        hardModeImages.addAll(Arrays.asList(one, one));
+//        ImageIcon two = new ImageIcon(getScaled(new ImageIcon(hImage15), 200, 1000/6));
+//        hardModeImages.addAll(Arrays.asList(two, two));
+//        ImageIcon three = new ImageIcon(getScaled(new ImageIcon(hImage15), 200, 1000/6));
+//        hardModeImages.addAll(Arrays.asList(three, three));
+//        ImageIcon four = new ImageIcon(getScaled(new ImageIcon(hImage15), 200, 1000/6));
+//        hardModeImages.addAll(Arrays.asList(four, four));
+//        ImageIcon five = new ImageIcon(getScaled(new ImageIcon(hImage15), 200, 1000/6));
+//        hardModeImages.addAll(Arrays.asList(five, five));
+//        ImageIcon six = new ImageIcon(getScaled(new ImageIcon(hImage15), 200, 1000/6));
+//        hardModeImages.addAll(Arrays.asList(six, six));
+//        ImageIcon seven = new ImageIcon(getScaled(new ImageIcon(hImage15), 200, 1000/6));
+//        hardModeImages.addAll(Arrays.asList(seven, seven));
+//        ImageIcon eight = new ImageIcon(getScaled(new ImageIcon(hImage15), 200, 1000/6));
+//        hardModeImages.addAll(Arrays.asList(eight, eight));
+//        ImageIcon nine = new ImageIcon(getScaled(new ImageIcon(hImage15), 200, 1000/6));
+//        hardModeImages.addAll(Arrays.asList(nine, nine));
+//        ImageIcon ten = new ImageIcon(getScaled(new ImageIcon(hImage15), 200, 1000/6));
+//        hardModeImages.addAll(Arrays.asList(ten, ten));
+//        ImageIcon eleven = new ImageIcon(getScaled(new ImageIcon(hImage15), 200, 1000/6));
+//        hardModeImages.addAll(Arrays.asList(eleven, eleven));
+//        ImageIcon twelve = new ImageIcon(getScaled(new ImageIcon(hImage15), 200, 1000/6));
+//        hardModeImages.addAll(Arrays.asList(twelve, twelve));
+//        ImageIcon thirteen = new ImageIcon(getScaled(new ImageIcon(hImage15), 200, 1000/6));
+//        hardModeImages.addAll(Arrays.asList(thirteen, thirteen));
+//        ImageIcon fourteen = new ImageIcon(getScaled(new ImageIcon(hImage15), 200, 1000/6));
+//        hardModeImages.addAll(Arrays.asList(fourteen, fourteen));
+//        ImageIcon fifteen = new ImageIcon(getScaled(new ImageIcon(hImage15), 200, 1000/6));
+//        hardModeImages.addAll(Arrays.asList(fifteen, fifteen));
