@@ -29,7 +29,7 @@ public class Startup {
 //        button.setBorderPainted(false);
 //        button.setBackground(new Color(153,153,255));
         JLabel label = new JLabel(new ImageIcon(new ImageIcon
-                (Startup.class.getClassLoader().getResource("Images/Memory-Game-Logo.png"))
+                (Startup.class.getClassLoader().getResource("Images/Startup/Memory-Game-Logo.png"))
                 .getImage().getScaledInstance(1000, 500, Image.SCALE_SMOOTH)));
 //        topPanel.add(button);
         topPanel.add(label);
@@ -56,9 +56,12 @@ public class Startup {
 //        Container contentPane = frame.getContentPane();
 //        contentPane.setLayout(new FlowLayout());
         //    private GridBagConstraints gbc;
-        JButton easy = new JButton("Easy Mode");
+        JButton easy = new JButton();
+        JLabel easyModeImage = new JLabel(new ImageIcon(new ImageIcon
+                (Startup.class.getClassLoader().getResource("Images/Startup/Easy-Mode.png"))
+                .getImage().getScaledInstance(1000, 200, Image.SCALE_SMOOTH)), SwingConstants.CENTER);
+        easy.add(easyModeImage);
         easy.setBackground(new Color(187, 255, 153));
-        easy.setFont(new Font("Arial", Font.PLAIN, 40));
 //        gbc.anchor = GridBagConstraints.SOUTH;
 //        gbc.weightY = 0;
 //        gbc.weightX = 0;
