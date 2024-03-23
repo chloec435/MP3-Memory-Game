@@ -4,8 +4,8 @@ import java.awt.event.*;
 
 public class Startup {
     private EasyMode easyMode;
-//    private MediumMode mediumMode;
-//    private HardMode hardMode;
+    private MediumMode mediumMode;
+    private HardMode hardMode;
     private JFrame frame;
     private JPanel mainPanel;
     private JPanel topPanel;
@@ -29,7 +29,7 @@ public class Startup {
 //        button.setBorderPainted(false);
 //        button.setBackground(new Color(153,153,255));
         JLabel label = new JLabel(new ImageIcon(new ImageIcon
-                (Startup.class.getClassLoader().getResource("Images/Startup/Memory-Game-Logo.png"))
+                (Startup.class.getClassLoader().getResource("Images/Startup/MemoryGame.png"))
                 .getImage().getScaledInstance(1000, 500, Image.SCALE_SMOOTH)));
 //        topPanel.add(button);
         topPanel.add(label);
@@ -59,7 +59,7 @@ public class Startup {
         JButton easy = new JButton();
         easy.setLayout(new BorderLayout());
         JLabel easyModeImage = new JLabel(new ImageIcon(new ImageIcon
-                (Startup.class.getClassLoader().getResource("Images/Startup/Easy-Mode.png"))
+                (Startup.class.getClassLoader().getResource("Images/Startup/EasyMode.png"))
                 .getImage().getScaledInstance(700, 150, Image.SCALE_SMOOTH)));
         easy.add(easyModeImage, BorderLayout.CENTER);
         easy.setBackground(new Color(187, 255, 153));
@@ -86,7 +86,7 @@ public class Startup {
         JButton medium = new JButton();
         medium.setLayout(new BorderLayout());
         JLabel mediumModeImage = new JLabel(new ImageIcon(new ImageIcon
-                (Startup.class.getClassLoader().getResource("Images/Startup/Medium-Mode.png"))
+                (Startup.class.getClassLoader().getResource("Images/Startup/MediumMode.png"))
                 .getImage().getScaledInstance(700, 150, Image.SCALE_SMOOTH)));
         medium.add(mediumModeImage, BorderLayout.CENTER);
         medium.setBackground(new Color(255, 221, 153));
@@ -102,7 +102,7 @@ public class Startup {
 //        contentPane.setVisible(true)
         medium.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                easyMode = new EasyMode();
+                mediumMode = new MediumMode();
             }
         });
     }
@@ -113,7 +113,7 @@ public class Startup {
         JButton hard = new JButton();
         hard.setLayout(new BorderLayout());
         JLabel hardModeImage = new JLabel(new ImageIcon(new ImageIcon
-                (Startup.class.getClassLoader().getResource("Images/Startup/Hard-Mode.png"))
+                (Startup.class.getClassLoader().getResource("Images/Startup/HardMode.png"))
                 .getImage().getScaledInstance(700, 150, Image.SCALE_SMOOTH)));
         hard.add(hardModeImage, BorderLayout.CENTER);
         hard.setBackground(new Color(255, 153, 204));
@@ -129,7 +129,7 @@ public class Startup {
 //        contentPane.setVisible(true)
         hard.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                easyMode = new EasyMode();
+                hardMode = new HardMode();
             }
         });
     }
