@@ -4,8 +4,6 @@ import java.awt.event.*;
 
 public class Startup {
     private JFrame frame;
-    private JPanel mainPanel;
-    private JPanel topPanel;
     private JPanel bottomPanel;
 
     public Startup() {
@@ -17,18 +15,12 @@ public class Startup {
     }
     public void frame() {
         frame = new JFrame("Memory Game");
-        mainPanel = new JPanel(new BorderLayout());
+        JPanel mainPanel = new JPanel(new BorderLayout());
         frame.add(mainPanel);
-        topPanel = new JPanel();
-//        JButton button = new JButton();
-//        button.setPreferredSize(new Dimension(100,500));
-//        button.setEnabled(false);
-//        button.setBorderPainted(false);
-//        button.setBackground(new Color(153,153,255));
+        JPanel topPanel = new JPanel();
         JLabel label = new JLabel(new ImageIcon(new ImageIcon
                 (Startup.class.getClassLoader().getResource("Images/Startup/MemoryGame.png"))
                 .getImage().getScaledInstance(1000, 500, Image.SCALE_SMOOTH)));
-//        topPanel.add(button);
         topPanel.add(label);
         topPanel.setBackground(new Color(153,153,255));
         bottomPanel = new JPanel();
