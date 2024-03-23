@@ -3,9 +3,6 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class Startup {
-    private EasyMode easyMode;
-    private MediumMode mediumMode;
-    private HardMode hardMode;
     private JFrame frame;
     private JPanel mainPanel;
     private JPanel topPanel;
@@ -75,7 +72,7 @@ public class Startup {
 //        contentPane.setVisible(true)
         easy.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                easyMode = new EasyMode();
+                EasyMode easyMode = new EasyMode();
             }
         });
     }
@@ -102,7 +99,7 @@ public class Startup {
 //        contentPane.setVisible(true)
         medium.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                mediumMode = new MediumMode();
+                MediumMode mediumMode = new MediumMode();
             }
         });
     }
@@ -129,7 +126,7 @@ public class Startup {
 //        contentPane.setVisible(true)
         hard.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                hardMode = new HardMode();
+                HardMode hardMode = new HardMode();
             }
         });
     }
