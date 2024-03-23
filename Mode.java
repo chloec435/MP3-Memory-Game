@@ -110,6 +110,7 @@ public class Mode {
                                         throw new RuntimeException(ex);
                                     }
                                     frame.dispose();
+                                    Startup start = new Startup();
                                 }
                             } else {
                                 disableAll(firstButton, clickedButton);
