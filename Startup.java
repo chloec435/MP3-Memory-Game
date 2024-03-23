@@ -66,7 +66,7 @@ public class Startup {
 //        gbc.anchor = GridBagConstraints.SOUTH;
 //        gbc.weightY = 0;
 //        gbc.weightX = 0;
-        easy.setPreferredSize(new Dimension(570, 115));
+        easy.setPreferredSize(new Dimension(570, 110));
         easy.setBorderPainted(false);
 //        easy.setBounds(275, 570, 450, 90);
         bottomPanel.add(easy, BorderLayout.NORTH);
@@ -93,7 +93,7 @@ public class Startup {
 //        gbc.anchor = GridBagConstraints.SOUTH;
 //        gbc.weightY = 0;
 //        gbc.weightX = 0;
-        medium.setPreferredSize(new Dimension(570, 115));
+        medium.setMaximumSize(new Dimension(570, 110));
         medium.setBorderPainted(false);
 //        easy.setBounds(275, 570, 450, 90);
         bottomPanel.add(medium, BorderLayout.CENTER);
@@ -120,7 +120,7 @@ public class Startup {
 //        gbc.anchor = GridBagConstraints.SOUTH;
 //        gbc.weightY = 0;
 //        gbc.weightX = 0;
-        hard.setPreferredSize(new Dimension(570, 115));
+        hard.setPreferredSize(new Dimension(570, 110));
         hard.setBorderPainted(false);
 //        easy.setBounds(275, 570, 450, 90);
         bottomPanel.add(hard, BorderLayout.SOUTH);
