@@ -37,16 +37,16 @@ public class Images {
         eImage5 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/goofy-easter6.png");
         eImage6 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/minnie-mouse-easter-eggs.png");
 
-        mImage1 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/34c8c5273925172ddeec167cb931926c.png");
-        mImage2 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/mickey-mouse-easter3.png");
-        mImage3 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/daisy-easter.png");
-        mImage4 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/donald-easter5.png");
-        mImage5 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/goofy-easter6.png");
-        mImage6 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/mickey-mouse-easter5.png");
-        mImage7 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/daisy-easter.png");
-        mImage8 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/donald-easter5.png");
-        mImage9 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/goofy-easter6.png");
-        mImage10 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/mickey-mouse-easter5.png");
+        mImage1 = EasyMode.class.getClassLoader().getResource("Images/MediumMode/Bugs_Bunny.svg.png");
+        mImage2 = EasyMode.class.getClassLoader().getResource("Images/MediumMode/Daffy_Duck.svg.png");
+        mImage3 = EasyMode.class.getClassLoader().getResource("Images/MediumMode/ElmerFudd.png");
+        mImage4 = EasyMode.class.getClassLoader().getResource("Images/MediumMode/Lola_Bunny_(SVG).png");
+        mImage5 = EasyMode.class.getClassLoader().getResource("Images/MediumMode/Marvin_the_Martian.svg.png");
+        mImage6 = EasyMode.class.getClassLoader().getResource("Images/MediumMode/Porky_Pig.svg.png");
+        mImage7 = EasyMode.class.getClassLoader().getResource("Images/MediumMode/Sylvester_the_Cat.svg.png");
+        mImage8 = EasyMode.class.getClassLoader().getResource("Images/MediumMode/Taz-Looney_Tunes.svg.png");
+        mImage9 = EasyMode.class.getClassLoader().getResource("Images/MediumMode/Tweety.svg.png");
+        mImage10 = EasyMode.class.getClassLoader().getResource("Images/MediumMode/Yosemite_Sam.svg.png");
 
         hImage1 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/minnie-mouse-easter-eggs.png");
         hImage2 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/minnie-pluto-easter.png");
@@ -77,10 +77,6 @@ public class Images {
         easyModeImages.addAll(Arrays.asList(five, five));
         ImageIcon six = new ImageIcon(new ImageIcon(eImage6).getImage().getScaledInstance(250, 250, Image.SCALE_SMOOTH));
         easyModeImages.addAll(Arrays.asList(six, six));
-        ImageIcon seven = new ImageIcon(new ImageIcon(eImage7).getImage().getScaledInstance(250, 250, Image.SCALE_SMOOTH));
-        easyModeImages.addAll(Arrays.asList(seven, seven));
-        ImageIcon eight = new ImageIcon(new ImageIcon(eImage8).getImage().getScaledInstance(250, 250, Image.SCALE_SMOOTH));
-        easyModeImages.addAll(Arrays.asList(eight, eight));
     }
     public void addMediumImages() {
         ImageIcon one = new ImageIcon(new ImageIcon(mImage1).getImage().getScaledInstance(250, 200, Image.SCALE_SMOOTH));
