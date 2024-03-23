@@ -17,7 +17,7 @@ public class Mode {
             .getResource("Images/MediumMode/Looney_Tunes_logo_1985-present.png")))
             .getImage().getScaledInstance(185, 100, Image.SCALE_SMOOTH));
     private final ImageIcon hardStartIcon = new ImageIcon(new ImageIcon(Objects.requireNonNull(EasyMode.class.getClassLoader()
-            .getResource("Images/EasyMode/Mickey_Mouse_Clubhouse_logo.svg.png")))
+            .getResource("Images/HardMode/Spongebob_Squarepants_Logo.png")))
             .getImage().getScaledInstance(200, 100, Image.SCALE_SMOOTH));
     private ImageIcon startIcon;
     private final ArrayList<ImageIcon> images = new ArrayList<ImageIcon>();
