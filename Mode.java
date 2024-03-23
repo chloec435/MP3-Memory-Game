@@ -10,10 +10,10 @@ public class Mode {
     private final ImageIcon[][] assignedImage;
     private final ImageIcon easyStartIcon = new ImageIcon(new ImageIcon(EasyMode.class.getClassLoader()
             .getResource("Images/EasyMode/Mickey_Mouse_Clubhouse_logo.svg.png"))
-            .getImage().getScaledInstance(250, 100, Image.SCALE_SMOOTH));
+            .getImage().getScaledInstance(235, 100, Image.SCALE_SMOOTH));
     private final ImageIcon mediumStartIcon = new ImageIcon(new ImageIcon(EasyMode.class.getClassLoader()
-            .getResource("Images/EasyMode/Mickey_Mouse_Clubhouse_logo.svg.png"))
-            .getImage().getScaledInstance(200, 100, Image.SCALE_SMOOTH));
+            .getResource("Images/MediumMode/Looney_Tunes_logo_1985-present.png"))
+            .getImage().getScaledInstance(185, 100, Image.SCALE_SMOOTH));
     private final ImageIcon hardStartIcon = new ImageIcon(new ImageIcon(EasyMode.class.getClassLoader()
             .getResource("Images/EasyMode/Mickey_Mouse_Clubhouse_logo.svg.png"))
             .getImage().getScaledInstance(200, 100, Image.SCALE_SMOOTH));
@@ -29,9 +29,9 @@ public class Mode {
         icons = new JButton[rows][columns];
         assignedImage = new ImageIcon[rows][columns];
         addImages(difficulty);
-        startingFrame(difficulty, rows, columns);
-        checkSame();
-//        showAll(difficulty, rows, columns);
+//        startingFrame(difficulty, rows, columns);
+//        checkSame(rows*columns/2);
+        showAll(difficulty, rows, columns);
     }
 
     public void addImages(String difficulty) {
@@ -69,7 +69,7 @@ public class Mode {
         frame.setLayout(new GridLayout(rows, columns));
         frame.setVisible(true);
     }
-    public void checkSame() {
+    public void checkSame(int totalMatches) {
         for (int r = 0; r < icons.length; r++) {
             for (int c = 0; c < icons[0].length; c++) {
                 int finalR = r;
@@ -85,7 +85,7 @@ public class Mode {
                         } else if (firstButton != clickedButton){
                             if (assignedImage[firstRow][firstColumn] == assignedImage[finalR][finalC]) {
                                 matches++;
-                                if (matches < 8) {
+                                if (matches < totalMatches) {
                                     disableAll(firstButton, clickedButton);
                                     Timer timer = new Timer(1000, new ActionListener() {
                                         public void actionPerformed(ActionEvent e) {
@@ -98,7 +98,7 @@ public class Mode {
                                     });
                                     timer.setRepeats(false);
                                     timer.start();
-                                } else if (matches == 8) {
+                                } else if (matches == totalMatches) {
                                     enableAll("end");
                                     JOptionPane.showMessageDialog(frame, "Congratulations! " +
                                             "You've matched all pairs.", "Game Over", JOptionPane.INFORMATION_MESSAGE);
