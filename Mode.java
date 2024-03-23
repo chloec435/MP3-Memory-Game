@@ -18,7 +18,7 @@ public class Mode {
             .getImage().getScaledInstance(185, 100, Image.SCALE_SMOOTH));
     private final ImageIcon hardStartIcon = new ImageIcon(new ImageIcon(Objects.requireNonNull(EasyMode.class.getClassLoader()
             .getResource("Images/HardMode/Spongebob_Squarepants_Logo.png")))
-            .getImage().getScaledInstance(200, 100, Image.SCALE_SMOOTH));
+            .getImage().getScaledInstance(175, 150, Image.SCALE_SMOOTH));
     private ImageIcon startIcon;
     private final ArrayList<ImageIcon> images = new ArrayList<ImageIcon>();
     private final ArrayList<JButton> matched = new ArrayList<JButton>();
@@ -31,9 +31,9 @@ public class Mode {
         icons = new JButton[rows][columns];
         assignedImage = new ImageIcon[rows][columns];
         addImages(difficulty);
-        startingFrame(difficulty, rows, columns);
-        checkSame(rows*columns/2);
-//        showAll(difficulty, rows, columns);
+//        startingFrame(difficulty, rows, columns);
+//        checkSame(rows*columns/2);
+        showAll(difficulty, rows, columns);
     }
 
     public void addImages(String difficulty) {
