@@ -6,7 +6,6 @@ import java.util.Objects;
 public class Startup {
     private JFrame frame;
     private JPanel bottomPanel;
-
     public Startup() {
         frame();
         easyButton();
@@ -55,6 +54,7 @@ public class Startup {
         bottomPanel.add(easy, BorderLayout.NORTH);
         easy.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
+                frame.dispose();
                 EasyMode easyMode = new EasyMode();
             }
         });
@@ -72,6 +72,7 @@ public class Startup {
         bottomPanel.add(medium, BorderLayout.CENTER);
         medium.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
+                frame.dispose();
                 MediumMode mediumMode = new MediumMode();
             }
         });
@@ -89,9 +90,13 @@ public class Startup {
         bottomPanel.add(hard, BorderLayout.SOUTH);
         hard.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
+                frame.dispose();
                 HardMode hardMode = new HardMode();
             }
         });
+    }
+    public void setFrameVisible() {
+        frame.show();
     }
 }
 
