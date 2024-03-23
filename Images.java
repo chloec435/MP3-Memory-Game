@@ -77,7 +77,7 @@ public class Images {
     }
     public void addHardImages() {
         for (int i = 0; i < 15; i++) {
-            ImageIcon icon = new ImageIcon(getScaled(new ImageIcon(hardModeURLs.get(i)), 200, 1000/6));
+            ImageIcon icon = new ImageIcon(getScaled(new ImageIcon(hardModeURLs.get(i)), 155, 180));
             hardModeImages.addAll(Arrays.asList(icon, icon));
         }
     }
