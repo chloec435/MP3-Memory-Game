@@ -57,10 +57,11 @@ public class Startup {
 //        contentPane.setLayout(new FlowLayout());
         //    private GridBagConstraints gbc;
         JButton easy = new JButton();
+        easy.setLayout(new BorderLayout());
         JLabel easyModeImage = new JLabel(new ImageIcon(new ImageIcon
                 (Startup.class.getClassLoader().getResource("Images/Startup/Easy-Mode.png"))
-                .getImage().getScaledInstance(1000, 200, Image.SCALE_SMOOTH)), SwingConstants.CENTER);
-        easy.add(easyModeImage);
+                .getImage().getScaledInstance(700, 150, Image.SCALE_SMOOTH)));
+        easy.add(easyModeImage, BorderLayout.CENTER);
         easy.setBackground(new Color(187, 255, 153));
 //        gbc.anchor = GridBagConstraints.SOUTH;
 //        gbc.weightY = 0;
@@ -82,9 +83,13 @@ public class Startup {
 //        Container contentPane = frame.getContentPane();
 //        contentPane.setLayout(new FlowLayout());
         //    private GridBagConstraints gbc;
-        JButton medium = new JButton("Medium Mode");
+        JButton medium = new JButton();
+        medium.setLayout(new BorderLayout());
+        JLabel mediumModeImage = new JLabel(new ImageIcon(new ImageIcon
+                (Startup.class.getClassLoader().getResource("Images/Startup/Medium-Mode.png"))
+                .getImage().getScaledInstance(700, 150, Image.SCALE_SMOOTH)));
+        medium.add(mediumModeImage, BorderLayout.CENTER);
         medium.setBackground(new Color(255, 221, 153));
-        medium.setFont(new Font("Arial", Font.PLAIN, 40));
 //        gbc.anchor = GridBagConstraints.SOUTH;
 //        gbc.weightY = 0;
 //        gbc.weightX = 0;
@@ -105,9 +110,13 @@ public class Startup {
 //        Container contentPane = frame.getContentPane();
 //        contentPane.setLayout(new FlowLayout());
         //    private GridBagConstraints gbc;
-        JButton hard = new JButton("Hard Mode");
+        JButton hard = new JButton();
+        hard.setLayout(new BorderLayout());
+        JLabel hardModeImage = new JLabel(new ImageIcon(new ImageIcon
+                (Startup.class.getClassLoader().getResource("Images/Startup/Hard-Mode.png"))
+                .getImage().getScaledInstance(700, 150, Image.SCALE_SMOOTH)));
+        hard.add(hardModeImage, BorderLayout.CENTER);
         hard.setBackground(new Color(255, 153, 204));
-        hard.setFont(new Font("Arial", Font.PLAIN, 40));
 //        gbc.anchor = GridBagConstraints.SOUTH;
 //        gbc.weightY = 0;
 //        gbc.weightX = 0;
