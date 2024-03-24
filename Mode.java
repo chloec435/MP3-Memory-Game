@@ -35,10 +35,14 @@ public class Mode {
     private Clip match;
     private Clip mismatch;
     private Clip theme;
+    private int rows;
+    private int columns;
 
-    public Mode(String modeDifficulty, int rows, int columns) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
-        icons = new JButton[rows][columns];
-        assignedImage = new ImageIcon[rows][columns];
+    public Mode(String modeDifficulty, int row, int column) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+        icons = new JButton[row][column];
+        assignedImage = new ImageIcon[row][column];
+        rows = row;
+        columns = column;
         Sounds sounds = new Sounds(modeDifficulty);
         match = AudioSystem.getClip();
         match.open(AudioSystem.getAudioInputStream(sounds.getMatch()));
@@ -55,8 +59,8 @@ public class Mode {
         } else {
             startIcon = hardStartIcon;
         }
-        startingFrame(rows, columns);
-        checkSame(rows*columns/2);
+        startingFrame();
+        checkSame(row*column/2);
 //        showAll(difficulty, rows, columns);
     }
 
@@ -65,7 +69,7 @@ public class Mode {
         images.addAll(Arrays.asList(iconImages.getImages(difficulty).toArray(new ImageIcon[0])));
     }
 
-    public void startingFrame(int rows, int columns) {
+    public void startingFrame() {
         frame = new JFrame();
         frame.setSize(1000, 1000);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -82,7 +86,7 @@ public class Mode {
             }
         }
         frame.setLayout(new GridLayout(rows, columns));
-        theme.start();
+//        theme.start();
         frame.setVisible(true);
     }
     public void checkSame(int totalMatches) {
@@ -119,12 +123,17 @@ public class Mode {
 //                                    thread(match.getMicrosecondLength()/1000);
 //                                    theme.start();
                                 } else if (matches == totalMatches) {
+                                    theme.start();
                                     enableAll("end");
                                     JOptionPane.showMessageDialog(frame, "Congratulations! " +
-                                            "You've matched all pairs.\nThis window will close itself after you click \"ok.\"",
+                                            "You've matched all pairs.",
                                             "Game Over", JOptionPane.INFORMATION_MESSAGE);
-                                    thread(2000);
-                                    frame.dispose();
+                                    theme.start();
+                                    public void windowClosed(WindowEvent e) {
+                                        theme.stop();
+                                    }
+//                                    frame.dispose();
+//                                    theme.stop();
                                     Startup start = new Startup();
                                 }
                             } else {
