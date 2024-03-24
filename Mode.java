@@ -35,12 +35,11 @@ public class Mode {
     private Clip match;
     private Clip mismatch;
     private Clip theme;
-    private Sounds sounds;
 
     public Mode(String modeDifficulty, int rows, int columns) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         icons = new JButton[rows][columns];
         assignedImage = new ImageIcon[rows][columns];
-        sounds = new Sounds(modeDifficulty);
+        Sounds sounds = new Sounds(modeDifficulty);
         match = AudioSystem.getClip();
         match.open(AudioSystem.getAudioInputStream(sounds.getMatch()));
         mismatch = AudioSystem.getClip();
