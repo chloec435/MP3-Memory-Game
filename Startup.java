@@ -1,6 +1,9 @@
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
 import java.util.Objects;
 
 public class Startup {
@@ -45,7 +48,7 @@ public class Startup {
         JButton easy = new JButton();
         easy.setLayout(new BorderLayout());
         JLabel easyModeImage = new JLabel(new ImageIcon(new ImageIcon
-                (Startup.class.getClassLoader().getResource("Images/Startup/EasyMode.png"))
+                (Objects.requireNonNull(Startup.class.getClassLoader().getResource("Images/Startup/EasyMode.png")))
                 .getImage().getScaledInstance(700, 150, Image.SCALE_SMOOTH)));
         easy.add(easyModeImage, BorderLayout.CENTER);
         easy.setBackground(new Color(187, 255, 153));
@@ -55,7 +58,11 @@ public class Startup {
         easy.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 frame.dispose();
-                EasyMode easyMode = new EasyMode();
+                try {
+                    EasyMode easyMode = new EasyMode();
+                } catch (UnsupportedAudioFileException | LineUnavailableException | IOException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
     }
@@ -63,7 +70,7 @@ public class Startup {
         JButton medium = new JButton();
         medium.setLayout(new BorderLayout());
         JLabel mediumModeImage = new JLabel(new ImageIcon(new ImageIcon
-                (Startup.class.getClassLoader().getResource("Images/Startup/MediumMode.png"))
+                (Objects.requireNonNull(Startup.class.getClassLoader().getResource("Images/Startup/MediumMode.png")))
                 .getImage().getScaledInstance(700, 150, Image.SCALE_SMOOTH)));
         medium.add(mediumModeImage, BorderLayout.CENTER);
         medium.setBackground(new Color(255, 221, 153));
@@ -73,7 +80,11 @@ public class Startup {
         medium.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 frame.dispose();
-                MediumMode mediumMode = new MediumMode();
+                try {
+                    MediumMode mediumMode = new MediumMode();
+                } catch (UnsupportedAudioFileException | LineUnavailableException | IOException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
     }
@@ -81,7 +92,7 @@ public class Startup {
         JButton hard = new JButton();
         hard.setLayout(new BorderLayout());
         JLabel hardModeImage = new JLabel(new ImageIcon(new ImageIcon
-                (Startup.class.getClassLoader().getResource("Images/Startup/HardMode.png"))
+                (Objects.requireNonNull(Startup.class.getClassLoader().getResource("Images/Startup/HardMode.png")))
                 .getImage().getScaledInstance(700, 150, Image.SCALE_SMOOTH)));
         hard.add(hardModeImage, BorderLayout.CENTER);
         hard.setBackground(new Color(255, 153, 204));
@@ -91,7 +102,11 @@ public class Startup {
         hard.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
                 frame.dispose();
-                HardMode hardMode = new HardMode();
+                try {
+                    HardMode hardMode = new HardMode();
+                } catch (UnsupportedAudioFileException | LineUnavailableException | IOException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
     }
