@@ -1,7 +1,12 @@
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
@@ -26,22 +31,42 @@ public class Mode {
     private int firstRow;
     private int firstColumn;
     private int matches;
+    private String difficulty;
+    private Clip match;
+    private Clip mismatch;
+    private Clip theme;
+    private Sounds sounds;
 
-    public Mode(String difficulty, int rows, int columns) {
+    public Mode(String modeDifficulty, int rows, int columns) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         icons = new JButton[rows][columns];
         assignedImage = new ImageIcon[rows][columns];
-        addImages(difficulty);
-        startingFrame(difficulty, rows, columns);
+        sounds = new Sounds(modeDifficulty);
+        match = AudioSystem.getClip();
+        match.open(AudioSystem.getAudioInputStream(sounds.getMatch()));
+        mismatch = AudioSystem.getClip();
+        mismatch.open(AudioSystem.getAudioInputStream(sounds.getMismatch()));
+        theme = AudioSystem.getClip();
+        theme.open(AudioSystem.getAudioInputStream(sounds.getTheme()));
+        difficulty = modeDifficulty;
+        addImages();
+        if (difficulty.equals("easy")) {
+            startIcon = easyStartIcon;
+        } else if (difficulty.equals("medium")) {
+            startIcon = mediumStartIcon;
+        } else {
+            startIcon = hardStartIcon;
+        }
+        startingFrame(rows, columns);
         checkSame(rows*columns/2);
 //        showAll(difficulty, rows, columns);
     }
 
-    public void addImages(String difficulty) {
+    public void addImages() {
         Images iconImages = new Images(difficulty);
         images.addAll(Arrays.asList(iconImages.getImages(difficulty).toArray(new ImageIcon[0])));
     }
 
-    public void startingFrame(String difficulty, int rows, int columns) {
+    public void startingFrame(int rows, int columns) {
         frame = new JFrame();
         frame.setSize(1000, 1000);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -49,19 +74,8 @@ public class Mode {
         int index;
         for (int r = 0; r < icons.length; r++) {
             for (int c = 0; c < icons[0].length; c++) {
-                if (difficulty.equals("easy")) {
-                    icons[r][c] = new JButton(easyStartIcon);
-                    icons[r][c].setBackground(Color.WHITE);
-                    startIcon = easyStartIcon;
-                } else if (difficulty.equals("medium")) {
-                    icons[r][c] = new JButton(mediumStartIcon);
-                    icons[r][c].setBackground(Color.WHITE);
-                    startIcon = mediumStartIcon;
-                } else {
-                    icons[r][c] = new JButton(hardStartIcon);
-                    icons[r][c].setBackground(Color.WHITE);
-                    startIcon = hardStartIcon;
-                }
+                icons[r][c] = new JButton(startIcon);
+                icons[r][c].setBackground(Color.WHITE);
                 frame.add(icons[r][c]);
                 index = (int) (Math.random() * images.size());
                 assignedImage[r][c] = images.get(index);
@@ -69,6 +83,7 @@ public class Mode {
             }
         }
         frame.setLayout(new GridLayout(rows, columns));
+        theme.start();
         frame.setVisible(true);
     }
     public void checkSame(int totalMatches) {
@@ -87,6 +102,8 @@ public class Mode {
                         } else if (firstButton != clickedButton){
                             if (assignedImage[firstRow][firstColumn] == assignedImage[finalR][finalC]) {
                                 matches++;
+                                theme.stop();
+                                tryPlay(match);
                                 if (matches < totalMatches) {
                                     disableAll(firstButton, clickedButton);
                                     Timer timer = new Timer(1000, new ActionListener() {
@@ -100,21 +117,21 @@ public class Mode {
                                     });
                                     timer.setRepeats(false);
                                     timer.start();
+                                    thread(match.getMicrosecondLength()/1000);
+                                    theme.start();
                                 } else if (matches == totalMatches) {
                                     enableAll("end");
                                     JOptionPane.showMessageDialog(frame, "Congratulations! " +
                                             "You've matched all pairs.\nThis window will close itself after you click \"ok.\"",
                                             "Game Over", JOptionPane.INFORMATION_MESSAGE);
-                                    try {
-                                        Thread.sleep(2000);
-                                    } catch (InterruptedException ex) {
-                                        throw new RuntimeException(ex);
-                                    }
+                                    thread(2000);
                                     frame.dispose();
                                     Startup start = new Startup();
                                 }
                             } else {
                                 disableAll(firstButton, clickedButton);
+                                theme.stop();
+                                tryPlay(mismatch);
                                 Timer timer = new Timer(1000, new ActionListener() {
                                     public void actionPerformed(ActionEvent e) {
 
@@ -126,12 +143,32 @@ public class Mode {
                                 });
                                 timer.setRepeats(false);
                                 timer.start();
+                                thread(mismatch.getMicrosecondLength()/1000);
+                                theme.start();
                             }
                         }
                     }
                 });
             }
         }
+    }
+    public void thread(long ms) {
+        try {
+            Thread.sleep(ms);
+        } catch (InterruptedException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+    public void tryPlay(Clip sound) {
+        try {
+            play(mismatch);
+        } catch (InterruptedException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+    public void play(Clip sound) throws InterruptedException {
+        sound.setFramePosition(0);
+        sound.start();
     }
     public void disableAll(JButton firstButton, JButton secondButton) {
         for (JButton[] icon : icons) {
@@ -153,7 +190,7 @@ public class Mode {
             }
         }
     }
-    public void showAll(String difficulty, int rows, int columns) {
+    public void showAll(int rows, int columns) {
         frame = new JFrame();
         frame.setSize(1000, 1000);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -162,19 +199,8 @@ public class Mode {
         for (int r = 0; r < icons.length; r++) {
             for (int c = 0; c < icons[0].length; c++) {
                 index = (int) (Math.random() * images.size());
-                if (difficulty.equals("easy")) {
-                    icons[r][c] = new JButton(images.get(index));
-                    icons[r][c].setBackground(Color.WHITE);
-                    startIcon = easyStartIcon;
-                } else if (difficulty.equals("medium")) {
-                    icons[r][c] = new JButton(images.get(index));
-                    icons[r][c].setBackground(Color.WHITE);
-                    startIcon = mediumStartIcon;
-                } else {
-                    icons[r][c] = new JButton(images.get(index));
-                    icons[r][c].setBackground(Color.WHITE);
-                    startIcon = hardStartIcon;
-                }
+                icons[r][c] = new JButton(images.get(index));
+                icons[r][c].setBackground(Color.WHITE);
                 frame.add(icons[r][c]);
                 images.remove(index);
             }
