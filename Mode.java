@@ -103,7 +103,8 @@ public class Mode {
                                 } else if (matches == totalMatches) {
                                     enableAll("end");
                                     JOptionPane.showMessageDialog(frame, "Congratulations! " +
-                                            "You've matched all pairs.", "Game Over", JOptionPane.INFORMATION_MESSAGE);
+                                            "You've matched all pairs.\nThis window will close itself after you click \"ok.\"",
+                                            "Game Over", JOptionPane.INFORMATION_MESSAGE);
                                     try {
                                         Thread.sleep(2000);
                                     } catch (InterruptedException ex) {
