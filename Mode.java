@@ -116,8 +116,8 @@ public class Mode {
                                     });
                                     timer.setRepeats(false);
                                     timer.start();
-                                    thread(match.getMicrosecondLength()/1000);
-                                    theme.start();
+//                                    thread(match.getMicrosecondLength()/1000);
+//                                    theme.start();
                                 } else if (matches == totalMatches) {
                                     enableAll("end");
                                     JOptionPane.showMessageDialog(frame, "Congratulations! " +
@@ -142,8 +142,8 @@ public class Mode {
                                 });
                                 timer.setRepeats(false);
                                 timer.start();
-                                thread(mismatch.getMicrosecondLength()/1000);
-                                theme.start();
+//                                thread(mismatch.getMicrosecondLength()/1000);
+//                                theme.start();
                             }
                         }
                     }
@@ -160,7 +160,7 @@ public class Mode {
     }
     public void tryPlay(Clip sound) {
         try {
-            play(mismatch);
+            play(sound);
         } catch (InterruptedException ex) {
             throw new RuntimeException(ex);
         }
