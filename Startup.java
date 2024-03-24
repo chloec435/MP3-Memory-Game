@@ -19,7 +19,7 @@ public class Startup {
         frame.add(mainPanel);
         JPanel topPanel = new JPanel();
         JLabel label = new JLabel(new ImageIcon(new ImageIcon
-                (Objects.requireNonNull(Startup.class.getClassLoader().getResource("Images/Startup/MemoryGame.png")))
+                (Objects.requireNonNull(Startup.class.getClassLoader().getResource("Images/Startup/Memory-Game.png")))
                 .getImage().getScaledInstance(1000, 500, Image.SCALE_SMOOTH)));
         topPanel.add(label);
         topPanel.setBackground(new Color(153,153,255));
