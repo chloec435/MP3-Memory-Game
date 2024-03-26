@@ -15,28 +15,19 @@ public class Mode {
     private JFrame frame;
     private final JButton[][] icons;
     private final ImageIcon[][] assignedImage;
-    private final ImageIcon easyStartIcon = new ImageIcon(new ImageIcon(Objects.requireNonNull(EasyMode.class.getClassLoader()
-            .getResource("Images/EasyMode/Mickey_Mouse_Clubhouse_logo.svg.png")))
-            .getImage().getScaledInstance(235, 100, Image.SCALE_SMOOTH));
-    private final ImageIcon mediumStartIcon = new ImageIcon(new ImageIcon(Objects.requireNonNull(EasyMode.class.getClassLoader()
-            .getResource("Images/MediumMode/Looney_Tunes_logo_1985-present.png")))
-            .getImage().getScaledInstance(185, 100, Image.SCALE_SMOOTH));
-    private final ImageIcon hardStartIcon = new ImageIcon(new ImageIcon(Objects.requireNonNull(EasyMode.class.getClassLoader()
-            .getResource("Images/HardMode/Spongebob_Squarepants_Logo.png")))
-            .getImage().getScaledInstance(175, 150, Image.SCALE_SMOOTH));
-    private ImageIcon startIcon;
+    private final ImageIcon startIcon;
     private final ArrayList<ImageIcon> images = new ArrayList<ImageIcon>();
     private final ArrayList<JButton> matched = new ArrayList<JButton>();
     private JButton firstButton = null;
     private int firstRow;
     private int firstColumn;
     private int matches;
-    private String difficulty;
-    private Clip match;
-    private Clip mismatch;
-    private Clip theme;
-    private int rows;
-    private int columns;
+    private final String difficulty;
+    private final Clip match;
+    private final Clip mismatch;
+    private final Clip theme;
+    private final int rows;
+    private final int columns;
 
     public Mode(String modeDifficulty, int row, int column) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         icons = new JButton[row][column];
@@ -53,15 +44,21 @@ public class Mode {
         difficulty = modeDifficulty;
         addImages();
         if (difficulty.equals("easy")) {
-            startIcon = easyStartIcon;
+            startIcon = new ImageIcon(new ImageIcon(Objects.requireNonNull(EasyMode.class.getClassLoader()
+                    .getResource("Images/EasyMode/Mickey_Mouse_Clubhouse_logo.svg.png")))
+                    .getImage().getScaledInstance(300, 150, Image.SCALE_SMOOTH));
         } else if (difficulty.equals("medium")) {
-            startIcon = mediumStartIcon;
+            startIcon = new ImageIcon(new ImageIcon(Objects.requireNonNull(EasyMode.class.getClassLoader()
+                    .getResource("Images/MediumMode/Looney_Tunes_logo_1985-present.png")))
+                    .getImage().getScaledInstance(235, 150, Image.SCALE_SMOOTH));
         } else {
-            startIcon = hardStartIcon;
+            startIcon = new ImageIcon(new ImageIcon(Objects.requireNonNull(EasyMode.class.getClassLoader()
+                    .getResource("Images/HardMode/Spongebob_Squarepants_Logo.png")))
+                    .getImage().getScaledInstance(215, 215, Image.SCALE_SMOOTH));
         }
-        startingFrame();
-        checkSame(row*column/2);
-//        showAll(difficulty, rows, columns);
+//        startingFrame();
+//        checkSame(row*column/2);
+        showAll(rows, columns);
     }
 
     public void addImages() {
@@ -71,7 +68,7 @@ public class Mode {
 
     public void startingFrame() {
         frame = new JFrame();
-        frame.setSize(1000, 1000);
+        frame.setSize(1250, 1080);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         int index;
@@ -86,8 +83,14 @@ public class Mode {
             }
         }
         frame.setLayout(new GridLayout(rows, columns));
-//        theme.start();
         frame.setVisible(true);
+        frame.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                theme.stop();
+                Startup start = new Startup();
+            }
+        });
     }
     public void checkSame(int totalMatches) {
         for (int r = 0; r < icons.length; r++) {
@@ -95,6 +98,7 @@ public class Mode {
                 int finalR = r;
                 int finalC = c;
                 icons[r][c].addActionListener(new ActionListener() {
+                    @Override
                     public void actionPerformed(ActionEvent e) {
                         JButton clickedButton = icons[finalR][finalC];
                         clickedButton.setIcon(assignedImage[finalR][finalC]);
@@ -110,6 +114,7 @@ public class Mode {
                                 if (matches < totalMatches) {
                                     disableAll(firstButton, clickedButton);
                                     Timer timer = new Timer(1000, new ActionListener() {
+                                        @Override
                                         public void actionPerformed(ActionEvent e) {
                                             firstButton.setEnabled(false);
                                             clickedButton.setEnabled(false);
@@ -120,27 +125,20 @@ public class Mode {
                                     });
                                     timer.setRepeats(false);
                                     timer.start();
-//                                    thread(match.getMicrosecondLength()/1000);
-//                                    theme.start();
                                 } else if (matches == totalMatches) {
+                                    theme.loop(Clip.LOOP_CONTINUOUSLY);
                                     theme.start();
                                     enableAll("end");
                                     JOptionPane.showMessageDialog(frame, "Congratulations! " +
                                             "You've matched all pairs.",
                                             "Game Over", JOptionPane.INFORMATION_MESSAGE);
-                                    theme.start();
-                                    public void windowClosed(WindowEvent e) {
-                                        theme.stop();
-                                    }
-//                                    frame.dispose();
-//                                    theme.stop();
-                                    Startup start = new Startup();
                                 }
                             } else {
                                 disableAll(firstButton, clickedButton);
                                 theme.stop();
                                 tryPlay(mismatch);
                                 Timer timer = new Timer(1000, new ActionListener() {
+                                    @Override
                                     public void actionPerformed(ActionEvent e) {
 
                                         firstButton.setIcon(startIcon);
@@ -151,20 +149,11 @@ public class Mode {
                                 });
                                 timer.setRepeats(false);
                                 timer.start();
-//                                thread(mismatch.getMicrosecondLength()/1000);
-//                                theme.start();
                             }
                         }
                     }
                 });
             }
-        }
-    }
-    public void thread(long ms) {
-        try {
-            Thread.sleep(ms);
-        } catch (InterruptedException ex) {
-            throw new RuntimeException(ex);
         }
     }
     public void tryPlay(Clip sound) {
@@ -194,13 +183,17 @@ public class Mode {
                     icon[c].setEnabled(true);
                 } else if (type.equals("end")) {
                     icon[c].setEnabled(true);
+                    ActionListener[] aListeners = icon[c].getActionListeners();
+                    for (ActionListener al : aListeners) {
+                        icon[c].removeActionListener(al);
+                    }
                 }
             }
         }
     }
     public void showAll(int rows, int columns) {
         frame = new JFrame();
-        frame.setSize(1000, 1000);
+        frame.setSize(1250, 1080);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         int index;
@@ -215,5 +208,14 @@ public class Mode {
         }
         frame.setLayout(new GridLayout(rows, columns));
         frame.setVisible(true);
+        theme.loop(Clip.LOOP_CONTINUOUSLY);
+        theme.start();
+        frame.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                theme.stop();
+                Startup start = new Startup();
+            }
+        });
     }
 }
