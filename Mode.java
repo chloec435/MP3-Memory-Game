@@ -19,13 +19,17 @@ public class Mode {
     private final ArrayList<ImageIcon> images = new ArrayList<ImageIcon>();
     private final ArrayList<JButton> matched = new ArrayList<JButton>();
     private JButton firstButton = null;
+    private JButton secondButton = null;
     private int firstRow;
     private int firstColumn;
+    private int secondRow;
+    private int secondColumn;
     private int matches;
     private final String difficulty;
     private final Clip match;
     private final Clip mismatch;
     private final Clip theme;
+    private Clip current;
     private final int rows;
     private final int columns;
 
@@ -56,9 +60,9 @@ public class Mode {
                     .getResource("Images/HardMode/Spongebob_Squarepants_Logo.png")))
                     .getImage().getScaledInstance(215, 215, Image.SCALE_SMOOTH));
         }
-//        startingFrame();
-//        checkSame(row*column/2);
-        showAll(rows, columns);
+        startingFrame();
+        checkSame(row*column/2);
+//        showAll(rows, columns);
     }
 
     public void addImages() {
@@ -97,6 +101,8 @@ public class Mode {
             for (int c = 0; c < icons[0].length; c++) {
                 int finalR = r;
                 int finalC = c;
+                theme.start();
+                current = theme;
                 icons[r][c].addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -106,45 +112,50 @@ public class Mode {
                             firstButton = clickedButton;
                             firstRow = finalR;
                             firstColumn = finalC;
-                        } else if (firstButton != clickedButton){
-                            if (assignedImage[firstRow][firstColumn] == assignedImage[finalR][finalC]) {
+                        } else if (firstButton != clickedButton && secondButton == null) {
+                            secondButton = clickedButton;
+                            secondRow = finalR;
+                            secondColumn = finalC;
+                            if (assignedImage[firstRow][firstColumn] == assignedImage[secondRow][secondColumn]) {
                                 matches++;
-                                theme.stop();
                                 tryPlay(match);
                                 if (matches < totalMatches) {
-                                    disableAll(firstButton, clickedButton);
-                                    Timer timer = new Timer(1000, new ActionListener() {
+                                    disableAll();
+                                    Timer timer = new Timer(2000, new ActionListener() {
                                         @Override
                                         public void actionPerformed(ActionEvent e) {
                                             firstButton.setEnabled(false);
-                                            clickedButton.setEnabled(false);
+                                            secondButton.setEnabled(false);
                                             matched.addAll(Arrays.asList(firstButton, clickedButton));
                                             enableAll("allExcept");
                                             firstButton = null;
+                                            secondButton = null;
                                         }
                                     });
                                     timer.setRepeats(false);
                                     timer.start();
                                 } else if (matches == totalMatches) {
+                                    theme.setFramePosition(0);
                                     theme.loop(Clip.LOOP_CONTINUOUSLY);
                                     theme.start();
                                     enableAll("end");
                                     JOptionPane.showMessageDialog(frame, "Congratulations! " +
-                                            "You've matched all pairs.",
+                                                    "You've matched all pairs.",
                                             "Game Over", JOptionPane.INFORMATION_MESSAGE);
                                 }
                             } else {
-                                disableAll(firstButton, clickedButton);
+                                disableAll();
                                 theme.stop();
                                 tryPlay(mismatch);
-                                Timer timer = new Timer(1000, new ActionListener() {
+                                Timer timer = new Timer(2000, new ActionListener() {
                                     @Override
                                     public void actionPerformed(ActionEvent e) {
 
                                         firstButton.setIcon(startIcon);
-                                        clickedButton.setIcon(startIcon);
+                                        secondButton.setIcon(startIcon);
                                         enableAll("allExcept");
                                         firstButton = null;
+                                        secondButton = null;
                                     }
                                 });
                                 timer.setRepeats(false);
@@ -157,21 +168,25 @@ public class Mode {
         }
     }
     public void tryPlay(Clip sound) {
+        if (current.isRunning()) {
+            current.stop();
+        }
         try {
             play(sound);
         } catch (InterruptedException ex) {
             throw new RuntimeException(ex);
         }
+        current = sound;
     }
     public void play(Clip sound) throws InterruptedException {
         sound.setFramePosition(0);
         sound.start();
     }
-    public void disableAll(JButton firstButton, JButton secondButton) {
-        for (JButton[] icon : icons) {
+    public void disableAll() {
+        for (int r = 0; r < icons.length; r++) {
             for (int c = 0; c < icons[0].length; c++) {
-                if (icon[c] != firstButton && icon[c] != secondButton) {
-                    icon[c].setEnabled(false);
+                if (icons[r][c] != firstButton && icons[r][c] != secondButton) {
+                    icons[r][c].setEnabled(false);
                 }
             }
         }
