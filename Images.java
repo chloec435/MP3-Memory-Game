@@ -65,19 +65,19 @@ public class Images {
     }
     public void addEasyImages() {
         for (int i = 0; i < 6; i++) {
-            ImageIcon icon = new ImageIcon(getScaled(new ImageIcon(easyModeURLs.get(i)), 235, 260));
+            ImageIcon icon = new ImageIcon(getScaled(new ImageIcon(easyModeURLs.get(i)), 300, 325));
             easyModeImages.addAll(Arrays.asList(icon, icon));
         }
     }
     public void addMediumImages() {
         for (int i = 0; i < 10; i++) {
-            ImageIcon icon = new ImageIcon(getScaled(new ImageIcon(mediumModeURLs.get(i)), 175, 215));
+            ImageIcon icon = new ImageIcon(getScaled(new ImageIcon(mediumModeURLs.get(i)), 175, 250));
             mediumModeImages.addAll(Arrays.asList(icon, icon));
         }
     }
     public void addHardImages() {
         for (int i = 0; i < 15; i++) {
-            ImageIcon icon = new ImageIcon(getScaled(new ImageIcon(hardModeURLs.get(i)), 155, 180));
+            ImageIcon icon = new ImageIcon(getScaled(new ImageIcon(hardModeURLs.get(i)), 175, 200));
             hardModeImages.addAll(Arrays.asList(icon, icon));
         }
     }
@@ -94,70 +94,3 @@ public class Images {
         }
     }
 }
-
-
-
-//        ImageIcon one = new ImageIcon(new ImageIcon(eImage1).getImage().getScaledInstance(1000/3, 250, Image.SCALE_SMOOTH));
-//        easyModeImages.addAll(Arrays.asList(one, one));
-//        ImageIcon two = new ImageIcon(new ImageIcon(eImage2).getImage().getScaledInstance(1000/3, 250, Image.SCALE_SMOOTH));
-//        easyModeImages.addAll(Arrays.asList(two, two));
-//        ImageIcon three = new ImageIcon(new ImageIcon(eImage3).getImage().getScaledInstance(1000/3, 250, Image.SCALE_SMOOTH));
-//        easyModeImages.addAll(Arrays.asList(three, three));
-//        ImageIcon four = new ImageIcon(new ImageIcon(eImage4).getImage().getScaledInstance(1000/3, 250, Image.SCALE_SMOOTH));
-//        easyModeImages.addAll(Arrays.asList(four, four));
-//        ImageIcon five = new ImageIcon(new ImageIcon(eImage5).getImage().getScaledInstance(1000/3, 250, Image.SCALE_SMOOTH));
-//        easyModeImages.addAll(Arrays.asList(five, five));
-//        ImageIcon six = new ImageIcon(new ImageIcon(eImage6).getImage().getScaledInstance(1000/3, 250, Image.SCALE_SMOOTH));
-//        easyModeImages.addAll(Arrays.asList(six, six));
-
-//        ImageIcon one = new ImageIcon(new ImageIcon(mImage1).getImage().getScaledInstance(250, 200, Image.SCALE_SMOOTH));
-//        mediumModeImages.addAll(Arrays.asList(one, one));
-//        ImageIcon two = new ImageIcon(new ImageIcon(mImage2).getImage().getScaledInstance(250, 200, Image.SCALE_SMOOTH));
-//        mediumModeImages.addAll(Arrays.asList(two, two));
-//        ImageIcon three = new ImageIcon(new ImageIcon(mImage3).getImage().getScaledInstance(250, 200, Image.SCALE_SMOOTH));
-//        mediumModeImages.addAll(Arrays.asList(three, three));
-//        ImageIcon four = new ImageIcon(new ImageIcon(mImage4).getImage().getScaledInstance(250, 200, Image.SCALE_SMOOTH));
-//        mediumModeImages.addAll(Arrays.asList(four, four));
-//        ImageIcon five = new ImageIcon(new ImageIcon(mImage5).getImage().getScaledInstance(250, 200, Image.SCALE_SMOOTH));
-//        mediumModeImages.addAll(Arrays.asList(five, five));
-//        ImageIcon six = new ImageIcon(new ImageIcon(mImage6).getImage().getScaledInstance(250, 200, Image.SCALE_SMOOTH));
-//        mediumModeImages.addAll(Arrays.asList(six, six));
-//        ImageIcon seven = new ImageIcon(new ImageIcon(mImage7).getImage().getScaledInstance(250, 200, Image.SCALE_SMOOTH));
-//        mediumModeImages.addAll(Arrays.asList(seven, seven));
-//        ImageIcon eight = new ImageIcon(new ImageIcon(mImage8).getImage().getScaledInstance(250, 200, Image.SCALE_SMOOTH));
-//        mediumModeImages.addAll(Arrays.asList(eight, eight));
-//        ImageIcon nine = new ImageIcon(new ImageIcon(mImage9).getImage().getScaledInstance(250, 200, Image.SCALE_SMOOTH));
-//        mediumModeImages.addAll(Arrays.asList(nine, nine));
-//        ImageIcon ten = new ImageIcon(new ImageIcon(mImage10).getImage().getScaledInstance(250, 200, Image.SCALE_SMOOTH));
-//        mediumModeImages.addAll(Arrays.asList(ten, ten));
-
-//        ImageIcon one = new ImageIcon(getScaled(new ImageIcon(hImage15), 200, 1000/6));
-//        hardModeImages.addAll(Arrays.asList(one, one));
-//        ImageIcon two = new ImageIcon(getScaled(new ImageIcon(hImage15), 200, 1000/6));
-//        hardModeImages.addAll(Arrays.asList(two, two));
-//        ImageIcon three = new ImageIcon(getScaled(new ImageIcon(hImage15), 200, 1000/6));
-//        hardModeImages.addAll(Arrays.asList(three, three));
-//        ImageIcon four = new ImageIcon(getScaled(new ImageIcon(hImage15), 200, 1000/6));
-//        hardModeImages.addAll(Arrays.asList(four, four));
-//        ImageIcon five = new ImageIcon(getScaled(new ImageIcon(hImage15), 200, 1000/6));
-//        hardModeImages.addAll(Arrays.asList(five, five));
-//        ImageIcon six = new ImageIcon(getScaled(new ImageIcon(hImage15), 200, 1000/6));
-//        hardModeImages.addAll(Arrays.asList(six, six));
-//        ImageIcon seven = new ImageIcon(getScaled(new ImageIcon(hImage15), 200, 1000/6));
-//        hardModeImages.addAll(Arrays.asList(seven, seven));
-//        ImageIcon eight = new ImageIcon(getScaled(new ImageIcon(hImage15), 200, 1000/6));
-//        hardModeImages.addAll(Arrays.asList(eight, eight));
-//        ImageIcon nine = new ImageIcon(getScaled(new ImageIcon(hImage15), 200, 1000/6));
-//        hardModeImages.addAll(Arrays.asList(nine, nine));
-//        ImageIcon ten = new ImageIcon(getScaled(new ImageIcon(hImage15), 200, 1000/6));
-//        hardModeImages.addAll(Arrays.asList(ten, ten));
-//        ImageIcon eleven = new ImageIcon(getScaled(new ImageIcon(hImage15), 200, 1000/6));
-//        hardModeImages.addAll(Arrays.asList(eleven, eleven));
-//        ImageIcon twelve = new ImageIcon(getScaled(new ImageIcon(hImage15), 200, 1000/6));
-//        hardModeImages.addAll(Arrays.asList(twelve, twelve));
-//        ImageIcon thirteen = new ImageIcon(getScaled(new ImageIcon(hImage15), 200, 1000/6));
-//        hardModeImages.addAll(Arrays.asList(thirteen, thirteen));
-//        ImageIcon fourteen = new ImageIcon(getScaled(new ImageIcon(hImage15), 200, 1000/6));
-//        hardModeImages.addAll(Arrays.asList(fourteen, fourteen));
-//        ImageIcon fifteen = new ImageIcon(getScaled(new ImageIcon(hImage15), 200, 1000/6));
-//        hardModeImages.addAll(Arrays.asList(fifteen, fifteen));
