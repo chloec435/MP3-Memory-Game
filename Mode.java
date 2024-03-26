@@ -88,6 +88,7 @@ public class Mode {
         }
         frame.setLayout(new GridLayout(rows, columns));
         frame.setVisible(true);
+        current = theme;
         frame.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent windowEvent) {
@@ -101,8 +102,6 @@ public class Mode {
             for (int c = 0; c < icons[0].length; c++) {
                 int finalR = r;
                 int finalC = c;
-                theme.start();
-                current = theme;
                 icons[r][c].addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -135,7 +134,6 @@ public class Mode {
                                     timer.setRepeats(false);
                                     timer.start();
                                 } else if (matches == totalMatches) {
-                                    theme.setFramePosition(0);
                                     theme.loop(Clip.LOOP_CONTINUOUSLY);
                                     theme.start();
                                     enableAll("end");
@@ -145,7 +143,6 @@ public class Mode {
                                 }
                             } else {
                                 disableAll();
-                                theme.stop();
                                 tryPlay(mismatch);
                                 Timer timer = new Timer(2000, new ActionListener() {
                                     @Override
@@ -206,6 +203,16 @@ public class Mode {
             }
         }
     }
+//    public void addRemoveAL(int row, int column, String pick) {
+//        ActionListener[] aListeners = icons[row][column].getActionListeners();
+//        for (ActionListener al : aListeners) {
+//            if (pick.equals("add")) {
+//                icons[row][column].addActionListener(al);
+//            } else {
+//                icons[row][column].removeActionListener(al);
+//            }
+//        }
+//    }
     public void showAll(int rows, int columns) {
         frame = new JFrame();
         frame.setSize(1250, 1080);
