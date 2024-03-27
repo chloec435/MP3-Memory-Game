@@ -8,19 +8,24 @@ public class Images {
     private final ArrayList<URL> easyModeURLs = new ArrayList<URL>();
     private final ArrayList<URL> mediumModeURLs = new ArrayList<URL>();
     private final ArrayList<URL> hardModeURLs = new ArrayList<URL>();
+    private final ArrayList<URL> impossibleModeURLs = new ArrayList<URL>();
     private final ArrayList<ImageIcon> easyModeImages = new ArrayList<ImageIcon>();
     private final ArrayList<ImageIcon> mediumModeImages = new ArrayList<ImageIcon>();
     private final ArrayList<ImageIcon> hardModeImages = new ArrayList<ImageIcon>();
+    private final ArrayList<ImageIcon> impossibleModeImages = new ArrayList<ImageIcon>();
     public Images(String difficulty) {
         urls();
-        if (difficulty.equals("easy")) {
-            addEasyImages();
+        if (difficulty.equals("impossible")) {
+            addImpossibleImages();
+        }
+        if (difficulty.equals("hard")) {
+            addHardImages();
         }
         if (difficulty.equals("medium")) {
             addMediumImages();
         }
-        if (difficulty.equals("hard")) {
-            addHardImages();
+        if (difficulty.equals("easy")) {
+            addEasyImages();
         }
     }
     public void urls() {
@@ -32,36 +37,68 @@ public class Images {
         URL eImage6 = EasyMode.class.getClassLoader().getResource("Images/EasyMode/minnie-mouse-easter-eggs.png");
         easyModeURLs.addAll(Arrays.asList(eImage1, eImage2, eImage3, eImage4, eImage5, eImage6));
 
-        URL mImage1 = EasyMode.class.getClassLoader().getResource("Images/MediumMode/Bugs_Bunny.svg.png");
-        URL mImage2 = EasyMode.class.getClassLoader().getResource("Images/MediumMode/Daffy_Duck.svg.png");
-        URL mImage3 = EasyMode.class.getClassLoader().getResource("Images/MediumMode/ElmerFudd.png");
-        URL mImage4 = EasyMode.class.getClassLoader().getResource("Images/MediumMode/Lola_Bunny_(SVG).png");
-        URL mImage5 = EasyMode.class.getClassLoader().getResource("Images/MediumMode/Marvin_the_Martian.svg.png");
-        URL mImage6 = EasyMode.class.getClassLoader().getResource("Images/MediumMode/Porky_Pig.svg.png");
-        URL mImage7 = EasyMode.class.getClassLoader().getResource("Images/MediumMode/Sylvester_the_Cat.svg.png");
-        URL mImage8 = EasyMode.class.getClassLoader().getResource("Images/MediumMode/Taz-Looney_Tunes.svg.png");
-        URL mImage9 = EasyMode.class.getClassLoader().getResource("Images/MediumMode/Tweety.svg.png");
-        URL mImage10 = EasyMode.class.getClassLoader().getResource("Images/MediumMode/Yosemite_Sam.svg.png");
+        URL mImage1 = MediumMode.class.getClassLoader().getResource("Images/MediumMode/Bugs_Bunny.svg.png");
+        URL mImage2 = MediumMode.class.getClassLoader().getResource("Images/MediumMode/Daffy_Duck.svg.png");
+        URL mImage3 = MediumMode.class.getClassLoader().getResource("Images/MediumMode/ElmerFudd.png");
+        URL mImage4 = MediumMode.class.getClassLoader().getResource("Images/MediumMode/Lola_Bunny_(SVG).png");
+        URL mImage5 = MediumMode.class.getClassLoader().getResource("Images/MediumMode/Marvin_the_Martian.svg.png");
+        URL mImage6 = MediumMode.class.getClassLoader().getResource("Images/MediumMode/Porky_Pig.svg.png");
+        URL mImage7 = MediumMode.class.getClassLoader().getResource("Images/MediumMode/Sylvester_the_Cat.svg.png");
+        URL mImage8 = MediumMode.class.getClassLoader().getResource("Images/MediumMode/Taz-Looney_Tunes.svg.png");
+        URL mImage9 = MediumMode.class.getClassLoader().getResource("Images/MediumMode/Tweety.svg.png");
+        URL mImage10 = MediumMode.class.getClassLoader().getResource("Images/MediumMode/Yosemite_Sam.svg.png");
         mediumModeURLs.addAll(Arrays.asList(mImage1, mImage2, mImage3, mImage4,
                 mImage5, mImage6, mImage7, mImage8, mImage9, mImage10));
 
-        URL hImage1 = EasyMode.class.getClassLoader().getResource("Images/HardMode/Gary_the_Snail.png");
-        URL hImage2 = EasyMode.class.getClassLoader().getResource("Images/HardMode/Mr._Krabs.svg.png");
-        URL hImage3 = EasyMode.class.getClassLoader().getResource("Images/HardMode/Mrs._Puff.svg.png");
-        URL hImage4 = EasyMode.class.getClassLoader().getResource("Images/HardMode/Patrick_Star.svg.png");
-        URL hImage5 = EasyMode.class.getClassLoader().getResource("Images/HardMode/Pearl_the_Whale.svg.png");
-        URL hImage6 = EasyMode.class.getClassLoader().getResource("Images/HardMode/Plankton_and_Karen.svg.png");
-        URL hImage7 = EasyMode.class.getClassLoader().getResource("Images/HardMode/Sandy_Cheeks.svg.png");
-        URL hImage8 = EasyMode.class.getClassLoader().getResource("Images/HardMode/spongebob-gary.png");
-        URL hImage9 = EasyMode.class.getClassLoader().getResource("Images/HardMode/spongebob.png");
-        URL hImage10 = EasyMode.class.getClassLoader().getResource("Images/HardMode/patrick.png");
-        URL hImage11 = EasyMode.class.getClassLoader().getResource("Images/HardMode/spongebob-yay.png");
-        URL hImage12 = EasyMode.class.getClassLoader().getResource("Images/HardMode/spongebob-good.png");
-        URL hImage13 = EasyMode.class.getClassLoader().getResource("Images/HardMode/spongebob-and-friends.png");
-        URL hImage14 = EasyMode.class.getClassLoader().getResource("Images/HardMode/SpongeBob_SquarePants_character.svg.png");
-        URL hImage15 = EasyMode.class.getClassLoader().getResource("Images/HardMode/Squidward_Tentacles.svg.png");
+        URL hImage1 = HardMode.class.getClassLoader().getResource("Images/HardMode/Gary_the_Snail.png");
+        URL hImage2 = HardMode.class.getClassLoader().getResource("Images/HardMode/Mr._Krabs.svg.png");
+        URL hImage3 = HardMode.class.getClassLoader().getResource("Images/HardMode/Mrs._Puff.svg.png");
+        URL hImage4 = HardMode.class.getClassLoader().getResource("Images/HardMode/Patrick_Star.svg.png");
+        URL hImage5 = HardMode.class.getClassLoader().getResource("Images/HardMode/Pearl_the_Whale.svg.png");
+        URL hImage6 = HardMode.class.getClassLoader().getResource("Images/HardMode/Plankton_and_Karen.svg.png");
+        URL hImage7 = HardMode.class.getClassLoader().getResource("Images/HardMode/Sandy_Cheeks.svg.png");
+        URL hImage8 = HardMode.class.getClassLoader().getResource("Images/HardMode/spongebob-gary.png");
+        URL hImage9 = HardMode.class.getClassLoader().getResource("Images/HardMode/spongebob.png");
+        URL hImage10 = HardMode.class.getClassLoader().getResource("Images/HardMode/patrick.png");
+        URL hImage11 = HardMode.class.getClassLoader().getResource("Images/HardMode/spongebob-yay.png");
+        URL hImage12 = HardMode.class.getClassLoader().getResource("Images/HardMode/spongebob-good.png");
+        URL hImage13 = HardMode.class.getClassLoader().getResource("Images/HardMode/spongebob-and-friends.png");
+        URL hImage14 = HardMode.class.getClassLoader().getResource("Images/HardMode/SpongeBob_SquarePants_character.svg.png");
+        URL hImage15 = HardMode.class.getClassLoader().getResource("Images/HardMode/Squidward_Tentacles.svg.png");
         hardModeURLs.addAll(Arrays.asList(hImage1, hImage2, hImage3, hImage4, hImage5, hImage6, hImage7,
                 hImage8, hImage9, hImage10, hImage11, hImage12, hImage13, hImage14, hImage15));
+
+        URL iImage1 = ImpossibleMode.class.getClassLoader().getResource("Images/HardMode/Gary_the_Snail.png");
+        URL iImage2 = ImpossibleMode.class.getClassLoader().getResource("Images/HardMode/Mr._Krabs.svg.png");
+        URL iImage3 = ImpossibleMode.class.getClassLoader().getResource("Images/HardMode/Mrs._Puff.svg.png");
+        URL iImage4 = ImpossibleMode.class.getClassLoader().getResource("Images/HardMode/Patrick_Star.svg.png");
+        URL iImage5 = ImpossibleMode.class.getClassLoader().getResource("Images/HardMode/Pearl_the_Whale.svg.png");
+        URL iImage6 = ImpossibleMode.class.getClassLoader().getResource("Images/HardMode/Plankton_and_Karen.svg.png");
+        URL iImage7 = ImpossibleMode.class.getClassLoader().getResource("Images/HardMode/Sandy_Cheeks.svg.png");
+        URL iImage8 = ImpossibleMode.class.getClassLoader().getResource("Images/HardMode/spongebob-gary.png");
+        URL iImage9 = ImpossibleMode.class.getClassLoader().getResource("Images/HardMode/spongebob.png");
+        URL iImage10 = ImpossibleMode.class.getClassLoader().getResource("Images/HardMode/patrick.png");
+        URL iImage11 = ImpossibleMode.class.getClassLoader().getResource("Images/HardMode/spongebob-yay.png");
+        URL iImage12 = ImpossibleMode.class.getClassLoader().getResource("Images/HardMode/spongebob-good.png");
+        URL iImage13 = ImpossibleMode.class.getClassLoader().getResource("Images/HardMode/spongebob-and-friends.png");
+        URL iImage14 = ImpossibleMode.class.getClassLoader().getResource("Images/HardMode/SpongeBob_SquarePants_character.svg.png");
+        URL iImage15 = ImpossibleMode.class.getClassLoader().getResource("Images/HardMode/Squidward_Tentacles.svg.png");
+        URL iImage16 = ImpossibleMode.class.getClassLoader().getResource("Images/HardMode/Gary_the_Snail.png");
+        URL iImage17 = ImpossibleMode.class.getClassLoader().getResource("Images/HardMode/Mr._Krabs.svg.png");
+        URL iImage18 = ImpossibleMode.class.getClassLoader().getResource("Images/HardMode/Mrs._Puff.svg.png");
+        URL iImage19 = ImpossibleMode.class.getClassLoader().getResource("Images/HardMode/Patrick_Star.svg.png");
+        URL iImage20 = ImpossibleMode.class.getClassLoader().getResource("Images/HardMode/Pearl_the_Whale.svg.png");
+        URL iImage21 = ImpossibleMode.class.getClassLoader().getResource("Images/HardMode/Plankton_and_Karen.svg.png");
+        URL iImage22 = ImpossibleMode.class.getClassLoader().getResource("Images/HardMode/Sandy_Cheeks.svg.png");
+        URL iImage23 = ImpossibleMode.class.getClassLoader().getResource("Images/HardMode/spongebob-gary.png");
+        URL iImage24 = ImpossibleMode.class.getClassLoader().getResource("Images/HardMode/spongebob.png");
+        URL iImage25 = ImpossibleMode.class.getClassLoader().getResource("Images/HardMode/patrick.png");
+        URL iImage26 = ImpossibleMode.class.getClassLoader().getResource("Images/HardMode/spongebob-yay.png");
+        URL iImage27 = ImpossibleMode.class.getClassLoader().getResource("Images/HardMode/spongebob-good.png");
+        URL iImage28 = ImpossibleMode.class.getClassLoader().getResource("Images/HardMode/spongebob-and-friends.png");
+        impossibleModeURLs.addAll(Arrays.asList(iImage1, iImage2, iImage3, iImage4, iImage5, iImage6, iImage7, iImage8,
+                iImage9, iImage10, iImage11, iImage12, iImage13, iImage14, iImage15, iImage16, iImage17, iImage18,
+                iImage19, iImage20, iImage21, iImage22, iImage23, iImage24, iImage25, iImage26, iImage27, iImage28));
     }
     public void addEasyImages() {
         for (int i = 0; i < 6; i++) {
@@ -81,16 +118,24 @@ public class Images {
             hardModeImages.addAll(Arrays.asList(icon, icon));
         }
     }
+    public void addImpossibleImages() {
+        for (int i = 0; i < 15; i++) {
+            ImageIcon icon = new ImageIcon(getScaled(new ImageIcon(hardModeURLs.get(i)), 175, 200));
+            impossibleModeImages.addAll(Arrays.asList(icon, icon));
+        }
+    }
     public Image getScaled(ImageIcon icon, int width, int height) {
         return icon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
     }
     public ArrayList<ImageIcon> getImages(String difficulty) {
-        if (difficulty.equals("easy")) {
-            return easyModeImages;
+        if (difficulty.equals("impossible")) {
+            return impossibleModeImages;
+        } else if (difficulty.equals("hard")) {
+            return hardModeImages;
         } else if (difficulty.equals("medium")) {
             return mediumModeImages;
         } else {
-            return hardModeImages;
+            return easyModeImages;
         }
     }
 }
