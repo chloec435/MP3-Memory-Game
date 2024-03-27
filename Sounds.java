@@ -5,17 +5,19 @@ public class Sounds {
     private File mismatch;
     private File theme;
     public Sounds(String difficulty){
-        if (difficulty.equals("easy")) {
-            easySounds();
+        if (difficulty.equals("impossible")) {
+            impossibleSounds();
+        } if (difficulty.equals("hard")) {
+            hardSounds();
         } else if (difficulty.equals("medium")) {
             mediumSounds();
         } else {
-            hardSounds();
+            easySounds();
         }
     }
     public void easySounds(){
-        match = new File("Audio/MMC/MMC You Did It.wav");
-        mismatch = new File("Audio/MMC/MM No! (5).wav");
+        match = new File("Audio/MMC/MMC Well All Right.wav");
+        mismatch = new File("Audio/MMC/MM No! (7).wav");
         theme = new File("Audio/MMC/MMC Theme Song.wav");
     }
     public void mediumSounds(){
@@ -24,6 +26,11 @@ public class Sounds {
         theme = new File("Audio/LT/Looney Tunes_ The Merry-Go-Round Broke Down Evolution 1937 - Present.wav");
     }
     public void hardSounds(){
+        match = new File("Audio/SS/SS Yes! Yeah!.wav");
+        mismatch = new File("Audio/SS/SS Wa Wa Wa.wav");
+        theme = new File("Audio/SS/SS Theme Song.wav");
+    }
+    public void impossibleSounds(){
         match = new File("Audio/SS/SS Yes! Yeah!.wav");
         mismatch = new File("Audio/SS/SS Wa Wa Wa.wav");
         theme = new File("Audio/SS/SS Theme Song.wav");
