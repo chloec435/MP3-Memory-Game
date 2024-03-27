@@ -7,7 +7,7 @@ public class Sounds {
     public Sounds(String difficulty){
         if (difficulty.equals("impossible")) {
             impossibleSounds();
-        } if (difficulty.equals("hard")) {
+        } else if (difficulty.equals("hard")) {
             hardSounds();
         } else if (difficulty.equals("medium")) {
             mediumSounds();
@@ -31,9 +31,9 @@ public class Sounds {
         theme = new File("Audio/SS/SS Theme Song.wav");
     }
     public void impossibleSounds(){
-        match = new File("Audio/SS/SS Yes! Yeah!.wav");
-        mismatch = new File("Audio/SS/SS Wa Wa Wa.wav");
-        theme = new File("Audio/SS/SS Theme Song.wav");
+        match = new File("Audio/TS/TS Woohoo Man Beats Machine.wav");
+        mismatch = new File("Audio/TS/TS Um No.wav");
+        theme = new File("Audio/TS/The Simpsons Theme Song.wav");
     }
     public File getMatch() {
         return match;
