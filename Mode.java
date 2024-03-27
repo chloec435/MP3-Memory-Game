@@ -49,8 +49,8 @@ public class Mode {
         addImages();
         if (difficulty.equals("impossible")) {
             startIcon = new ImageIcon(new ImageIcon(Objects.requireNonNull(EasyMode.class.getClassLoader()
-                    .getResource("Images/HardMode/Spongebob_Squarepants_Logo.png")))
-                    .getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH));
+                    .getResource("Images/ImpossibleMode/The_Simpsons_yellow_logo.svg.png")))
+                    .getImage().getScaledInstance(150, 100, Image.SCALE_SMOOTH));
         } else if (difficulty.equals("hard")) {
             startIcon = new ImageIcon(new ImageIcon(Objects.requireNonNull(EasyMode.class.getClassLoader()
                     .getResource("Images/HardMode/Spongebob_Squarepants_Logo.png")))
@@ -97,7 +97,11 @@ public class Mode {
             @Override
             public void windowClosing(java.awt.event.WindowEvent windowEvent) {
                 theme.stop();
-                Startup start = new Startup();
+                try {
+                    Startup start = new Startup();
+                } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
     }
@@ -240,7 +244,11 @@ public class Mode {
             @Override
             public void windowClosing(java.awt.event.WindowEvent windowEvent) {
                 theme.stop();
-                Startup start = new Startup();
+                try {
+                    Startup start = new Startup();
+                } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
     }
