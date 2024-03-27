@@ -9,11 +9,13 @@ import java.util.Objects;
 public class Startup {
     private JFrame frame;
     private JPanel bottomPanel;
+    private JPanel extraPanel;
     public Startup() {
         frame();
         easyButton();
         mediumButton();
         hardButton();
+        impossibleButton();
         frame.setVisible(true);
     }
     public void frame() {
@@ -23,15 +25,16 @@ public class Startup {
         JPanel topPanel = new JPanel();
         JLabel label = new JLabel(new ImageIcon(new ImageIcon
                 (Objects.requireNonNull(Startup.class.getClassLoader().getResource("Images/Startup/Memory-Game.png")))
-                .getImage().getScaledInstance(1250, 500, Image.SCALE_SMOOTH)));
+                .getImage().getScaledInstance(1000, 400, Image.SCALE_SMOOTH)));
         topPanel.add(label);
         topPanel.setBackground(new Color(153,153,255));
         bottomPanel = new JPanel();
         bottomPanel.setLayout(new BorderLayout(0,25));
         bottomPanel.setBackground(new Color(153,153,255));
-        JPanel extraPanel = new JPanel();
+        extraPanel = new JPanel();
+        extraPanel.setLayout(new BorderLayout());
         JButton button2 = new JButton();
-        button2.setPreferredSize(new Dimension(100,50));
+        button2.setPreferredSize(new Dimension(100,25));
         button2.setEnabled(false);
         button2.setBorderPainted(false);
         button2.setBackground(new Color(153,153,255));
@@ -52,7 +55,7 @@ public class Startup {
                 .getImage().getScaledInstance(700, 150, Image.SCALE_SMOOTH)));
         easy.add(easyModeImage, BorderLayout.CENTER);
         easy.setBackground(new Color(187, 255, 153));
-        easy.setPreferredSize(new Dimension(570, 110));
+        easy.setPreferredSize(new Dimension(570, 115));
         easy.setBorderPainted(false);
         bottomPanel.add(easy, BorderLayout.NORTH);
         easy.addActionListener(new ActionListener() {
@@ -75,7 +78,7 @@ public class Startup {
                 .getImage().getScaledInstance(700, 150, Image.SCALE_SMOOTH)));
         medium.add(mediumModeImage, BorderLayout.CENTER);
         medium.setBackground(new Color(255, 221, 153));
-        medium.setMaximumSize(new Dimension(570, 110));
+        medium.setMaximumSize(new Dimension(570, 115));
         medium.setBorderPainted(false);
         bottomPanel.add(medium, BorderLayout.CENTER);
         medium.addActionListener(new ActionListener() {
@@ -98,7 +101,7 @@ public class Startup {
                 .getImage().getScaledInstance(700, 150, Image.SCALE_SMOOTH)));
         hard.add(hardModeImage, BorderLayout.CENTER);
         hard.setBackground(new Color(255, 153, 204));
-        hard.setPreferredSize(new Dimension(570, 110));
+        hard.setPreferredSize(new Dimension(570, 115));
         hard.setBorderPainted(false);
         bottomPanel.add(hard, BorderLayout.SOUTH);
         hard.addActionListener(new ActionListener() {
@@ -107,6 +110,29 @@ public class Startup {
                 frame.dispose();
                 try {
                     HardMode hardMode = new HardMode();
+                } catch (UnsupportedAudioFileException | LineUnavailableException | IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
+    }
+    public void impossibleButton() {
+        JButton impossible = new JButton();
+        impossible.setLayout(new BorderLayout());
+        JLabel impossibleModeImage = new JLabel(new ImageIcon(new ImageIcon
+                (Objects.requireNonNull(Startup.class.getClassLoader().getResource("Images/Startup/ImpossibleMode.png")))
+                .getImage().getScaledInstance(700, 150, Image.SCALE_SMOOTH)));
+        impossible.add(impossibleModeImage, BorderLayout.CENTER);
+        impossible.setBackground(new Color(159, 210, 249));
+        impossible.setPreferredSize(new Dimension(1250, 115));
+        impossible.setBorderPainted(false);
+        extraPanel.add(impossible, BorderLayout.SOUTH);
+        impossible.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                frame.dispose();
+                try {
+                    ImpossibleMode impossibleMode = new ImpossibleMode();
                 } catch (UnsupportedAudioFileException | LineUnavailableException | IOException ex) {
                     throw new RuntimeException(ex);
                 }
