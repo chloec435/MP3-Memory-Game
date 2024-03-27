@@ -47,18 +47,22 @@ public class Mode {
         theme.open(AudioSystem.getAudioInputStream(sounds.getTheme()));
         difficulty = modeDifficulty;
         addImages();
-        if (difficulty.equals("easy")) {
+        if (difficulty.equals("impossible")) {
             startIcon = new ImageIcon(new ImageIcon(Objects.requireNonNull(EasyMode.class.getClassLoader()
-                    .getResource("Images/EasyMode/Mickey_Mouse_Clubhouse_logo.svg.png")))
-                    .getImage().getScaledInstance(300, 150, Image.SCALE_SMOOTH));
+                    .getResource("Images/HardMode/Spongebob_Squarepants_Logo.png")))
+                    .getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH));
+        } else if (difficulty.equals("hard")) {
+            startIcon = new ImageIcon(new ImageIcon(Objects.requireNonNull(EasyMode.class.getClassLoader()
+                    .getResource("Images/HardMode/Spongebob_Squarepants_Logo.png")))
+                    .getImage().getScaledInstance(215, 215, Image.SCALE_SMOOTH));
         } else if (difficulty.equals("medium")) {
             startIcon = new ImageIcon(new ImageIcon(Objects.requireNonNull(EasyMode.class.getClassLoader()
                     .getResource("Images/MediumMode/Looney_Tunes_logo_1985-present.png")))
                     .getImage().getScaledInstance(235, 150, Image.SCALE_SMOOTH));
         } else {
             startIcon = new ImageIcon(new ImageIcon(Objects.requireNonNull(EasyMode.class.getClassLoader()
-                    .getResource("Images/HardMode/Spongebob_Squarepants_Logo.png")))
-                    .getImage().getScaledInstance(215, 215, Image.SCALE_SMOOTH));
+                    .getResource("Images/EasyMode/Mickey_Mouse_Clubhouse_logo.svg.png")))
+                    .getImage().getScaledInstance(300, 150, Image.SCALE_SMOOTH));
         }
         startingFrame();
         checkSame(row*column/2);
