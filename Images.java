@@ -120,7 +120,7 @@ public class Images {
     }
     public void addImpossibleImages() {
         for (int i = 0; i < 28; i++) {
-            ImageIcon icon = new ImageIcon(getScaled(new ImageIcon(impossibleModeURLs.get(i)), 175, 200));
+            ImageIcon icon = new ImageIcon(getScaled(new ImageIcon(impossibleModeURLs.get(i)), 125, 150));
             impossibleModeImages.addAll(Arrays.asList(icon, icon));
         }
     }
